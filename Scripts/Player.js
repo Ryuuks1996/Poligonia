@@ -1,14 +1,8 @@
-class Player
+class Player extends GameObject
 {
 	constructor()
 	{
 	}
 	
-	var update = function()
-	{
-	}
 	
-	var render = function()
-	{
-	}
 }
