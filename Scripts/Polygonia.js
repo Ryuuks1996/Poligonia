@@ -2,6 +2,7 @@ var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
 var ObjectLoader =  new THREE.FBXLoader();
+var TextureLoader = new THREE.TextureLoader();
 
 function Destroy(scene,mesh)
 {
@@ -34,14 +35,16 @@ function Init()
 	
 	//CONTROLLERS
 	this.controller = new Controller();
+	
+	//GAME
+	this.gameScene = new GameScene();
 }
 
 function Loop()
 {
 	requestAnimationFrame(Loop, 1000 / 60);
-	controller.Update();
-	
-
+	this.controller.Update();	
+	this.gameScene.Update();
 }
 
 requestAnimationFrame(Loop, 1000 / 60);

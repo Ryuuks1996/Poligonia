@@ -14,6 +14,11 @@ class GameObject
 		
 	}
 	
+	Draw( buffer )
+	{
+		
+	}
+	
 	Translate(x,y,z)
     {
         this.position.add(new THREE.Vector3(x,y,z));

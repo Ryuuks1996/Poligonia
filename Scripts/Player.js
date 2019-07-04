@@ -4,5 +4,8 @@ class Player extends GameObject
 	{
 	}
 	
-	
+	Update()
+	{
+		
+	}
 }
