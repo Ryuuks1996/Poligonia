@@ -1,13 +1,21 @@
 class GameObject
 {
-	
-	
-	constructor( x, y, z, scene, geometry, material)
+	constructor( x, y, z, scene, material , geometry )
 	{
+		
+		if(material == undefined){ console.log("[undefined Geometry]"); material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );}
+		if(geometry == undefined){ console.log("[undefined Geometry]"); geometry = new THREE.BoxGeometry( 1, 1, 1 );}
+		
+		
 		this.mesh = new THREE.Mesh( geometry, material );
 		
-		scene.add(mesh);
+		this.mesh.position.set(x,y,z);
+		
+		scene.add(this.mesh);
+		
+		
 	}
+	
 	
 	Update()
 	{

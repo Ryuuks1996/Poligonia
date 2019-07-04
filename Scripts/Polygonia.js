@@ -3,6 +3,7 @@ var HEIGHT = window.innerHeight;
 
 var ObjectLoader =  new THREE.FBXLoader();
 var CubeTextureLoader = new THREE.CubeTextureLoader();
+var AudioLoader = new THREE.AudioLoader();
 
 function Destroy(scene,mesh)
 {
@@ -10,6 +11,14 @@ function Destroy(scene,mesh)
 	scene.remove(mesh);
 	mesh.dispose();
 	delete(mesh);
+}
+
+function PlayAudio(path,loop)
+{
+	if(!loop)
+	{
+		AudioLisener.load();
+	}
 }
 
 Init();
