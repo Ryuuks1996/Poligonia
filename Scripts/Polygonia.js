@@ -1,8 +1,7 @@
-var scene;
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
-var ObjectLoader = new THREE.OBJLoader();
+var ObjectLoader =  new THREE.FBXLoader();
 
 function Destroy(scene,mesh)
 {
@@ -16,10 +15,7 @@ Init();
 Loop();
 
 function Init()
-{
-	//SCENE
-	scene = new THREE.Scene();
-	
+{	
 	//RENDERER
 	this.renderer = new THREE.WebGLRenderer({antialias:true, alpha: true});
 	this.renderer.autoClear = false;
