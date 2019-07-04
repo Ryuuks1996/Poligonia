@@ -2,7 +2,7 @@ var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
 var ObjectLoader =  new THREE.FBXLoader();
-var TextureLoader = new THREE.TextureLoader();
+var CubeTextureLoader = new THREE.CubeTextureLoader();
 
 function Destroy(scene,mesh)
 {
@@ -45,6 +45,8 @@ function Loop()
 	requestAnimationFrame(Loop, 1000 / 60);
 	this.controller.Update();	
 	this.gameScene.Update();
+	
+	this.gameScene.Draw(this.renderer);
 }
 
 requestAnimationFrame(Loop, 1000 / 60);
