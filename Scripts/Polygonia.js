@@ -1,7 +1,6 @@
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
 
-var ObjectLoader =  new THREE.FBXLoader();
 var CubeTextureLoader = new THREE.CubeTextureLoader();
 var AudioLoader = new THREE.AudioLoader();
 
