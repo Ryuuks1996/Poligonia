@@ -1,6 +1,6 @@
 class GameObject
 {
-	constructor( x, y, z, scene, obj3D )
+	constructor( x, y, z, scene, obj3D, material )
 	{
 		
 		//if(material === undefined){ console.log("[undefined material]"); material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );}
@@ -8,9 +8,13 @@ class GameObject
 		
 		
 		this.mesh = obj3D;
+		for(var child in this.mesh.children)
+		{
+			this.mesh.children[child].material = material;
+		}
 		//this.mesh = new THREE.Mesh( geometry, material );
 		
-		//this.mesh.position.set(x,y,z);
+		this.mesh.position.set(x,y,z);
 		
 		scene.add(this.mesh);
 		
@@ -26,6 +30,11 @@ class GameObject
 	Draw( buffer )
 	{
 		
+	}
+	
+	SetPosition(x,y,z)
+	{
+		this.mesh.position.set(x,y,z);
 	}
 	
 	Translate(x,y,z)
