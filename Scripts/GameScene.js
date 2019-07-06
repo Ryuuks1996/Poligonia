@@ -18,7 +18,9 @@ class GameScene
 		  ]);		  
 		this.scene.background = this.skyBox;
 		
-		this.player = new Player(0,0,0,this.scene);
+		this.light = new THREE.AmbientLight( 0x404040 ); this.scene.add(this.light);
+		this.player = new Player(0,0,0,this.scene,Models[0]);
+
 	}
 	
 	Update()
@@ -34,3 +36,6 @@ class GameScene
 		buffer.render(this.scene,this.camera);
 	}
 }
+
+
+
