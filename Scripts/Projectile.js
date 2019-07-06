@@ -1,14 +1,14 @@
-class Projectile
+class Projectile extends GameObject
 {
 	constructor()
 	{
 	}
 	
-	var update = function()
+	Update()
 	{
 	}
 	
-	var render = function()
+	Render()
 	{
 	}
 }

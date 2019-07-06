@@ -6,6 +6,7 @@ class GameObject
 		if(material == undefined){ console.log("[undefined Geometry]"); material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );}
 		if(geometry == undefined){ console.log("[undefined Geometry]"); geometry = new THREE.BoxGeometry( 1, 1, 1 );}
 		
+		this.behaviors = [];
 		
 		this.mesh = new THREE.Mesh( geometry, material );
 		
@@ -15,11 +16,19 @@ class GameObject
 		
 		
 	}
+
+	AddBehaviors(behavior)
+	{
+		this.behaviors.push(behavior);
+	}
 	
 	
 	Update()
 	{
-		
+		for(b in this.behaviors)
+		{
+			b.Update();
+		}	
 	}
 	
 	Draw( buffer )
