@@ -3,7 +3,6 @@ class GameScene extends Scene
 	constructor()
 	{
 		super();
-
 		
 		this.skyBox = CubeTextureLoader.load([
 			'Assets2D/Background/sky_02.png',
@@ -17,7 +16,10 @@ class GameScene extends Scene
 		
 		this.camera.position.z = -20;
 		this.light = new THREE.AmbientLight(0xffffff); this.scene.add(this.light);
-		this.player = new Player(0,-10,0,this.scene,Models[0],Materials[0]);		
+		this.player = new Player(0,-10,0,this.scene,Models[0],Materials[0]);
+
+		this.iconPlayer = new CanvasObject(0,0,this.sceneHUD,Materials[0],200,200);
+		
 	}
 	
 	Update()

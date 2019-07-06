@@ -9,7 +9,7 @@ class Scene
 		this.camera.position.z = -10;
 		this.camera.lookAt(0,0,0);
 		
-		this.SceneHUD = new THREE.Scene();
+		this.sceneHUD = new THREE.Scene();
 		this.cameraHUD = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 1000 );
 		this.cameraHUD.position.z = 10;
 	}
@@ -28,6 +28,6 @@ class Scene
 	Draw( buffer )
 	{
 		buffer.render(this.scene,this.camera);
-		buffer.render(this.SceneHUD,this.cameraHUD);
+		buffer.render(this.sceneHUD,this.cameraHUD);
 	}
 }
