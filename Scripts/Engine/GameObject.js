@@ -7,9 +7,9 @@ class GameObject
 		{ 
 			material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
 		}
-		if(geometry === undefined)
+		if(obj3D === undefined)
 		{ 
-			geometry = new THREE.BoxGeometry( 1, 1, 1 );
+			obj3D = new THREE.Mesh( new THREE.BoxGeometry( 1, 1, 1 ),material);
 		}
 		
 		this.behaviors = [];
@@ -64,9 +64,9 @@ class GameObject
 	
 	Destroy()
     {
-        mesh.geometry.dispose();
-		mesh.dispose();
-		delete(mesh);
+        this.mesh.geometry.dispose();
+		this.mesh.dispose();
+		delete(this.mesh);
 		this.scene.remove(this);
     }
 }

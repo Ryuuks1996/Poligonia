@@ -16,15 +16,19 @@ class GameScene extends Scene
 		
 		this.camera.position.z = -20;
 		this.light = new THREE.AmbientLight(0xffffff); this.scene.add(this.light);
-		this.player = new Player(0,-10,0,this.scene,Models[0],Materials[0]);
-
-		this.iconPlayer = new CanvasObject(0,0,this.sceneHUD,Materials[0],200,200);
+		this.player = new Player(0,-10,0,this.scene,Models[0],GetMaterial("Material_Ship"));
+		
+		this.miniMap = new MiniMap(this.sceneHUD);
+		this.miniMap.AddTarget(this.player,"Material_Ship",20);
 		
 	}
 	
 	Update()
 	{
 		super.Update();
+		this.miniMap.Update();
+		
+		//this.player.Translate(0.1,0,0.1);
 	}
 	
 	Draw( buffer )
