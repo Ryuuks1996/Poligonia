@@ -1,20 +1,23 @@
 class GameObject
 {
-	constructor( x, y, z, scene, obj3D, material )
+	constructor( x, y, z, scene, obj3D, material)
 	{
 		
 		//if(material === undefined){ console.log("[undefined material]"); material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );}
 		//if(geometry === undefined){ console.log("[undefined Geometry]"); geometry = new THREE.BoxGeometry( 1, 1, 1 );}
 		
 		this.behaviors = [];
-		
+
+		this.tag = "gameObject";
+
 		this.mesh = obj3D;
 		for(var child in this.mesh.children)
 		{
 			this.mesh.children[child].material = material;
 		}
 		//this.mesh = new THREE.Mesh( geometry, material );
-		this.transform = new Transform(x,y,z);
+		this.mesh.position.set(x,y,z);
+		this.rotation = new THREE.Vector3();
 		
 		scene.add(this.mesh);
 	}
@@ -35,7 +38,12 @@ class GameObject
 	
 	SetPosition(x,y,z)
 	{
-		this.transform.SetPosition(x,y,z);
+		this.mesh.position.set(x,y,z);
+	}
+
+	Translate(translation)
+	{
+		this.mesh.position.add(translation);
 	}
 	
 	Rotate(rotation)
@@ -45,6 +53,13 @@ class GameObject
         this.position.applyEuler(rotation);
 		this.position.set(this.position.x,this.position.y,this.position.z);
 		*/
-    }
+		this.mesh.rotation.add(rotation);
+	}
+	
+	Destroy(scene)
+	{
+		
+		scene.remove(this);
+	}
 }
 

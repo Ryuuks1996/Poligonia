@@ -23,6 +23,24 @@ document.addEventListener('keyup', function(event)
 	}
 });
 
+document.addEventListener('onmousedown', function(event) 
+{
+	keys.push(event.button);
+});
+
+document.addEventListener('onmouseup', function(event) 
+{
+	for(var i = 0; i < keys.length; i++)
+	{
+		if(event.button == keys[i])
+		{
+			keys.splice(i,1);
+			break;
+		}
+	}
+});
+
+
 class Controller
 {
 	constructor(){}
@@ -82,7 +100,18 @@ class InputManager
 {
 	constructor()
 	{
-		this.inputs = [];
+		this.buttons = [];
+		this.buttons.push("Right", 39);
+		this.buttons.push("Right", 68);
+		this.buttons.push("Left", 37);
+		this.buttons.push("Left", 65);
+		this.buttons.push("Up", 38);
+		this.buttons.push("Up", 87);
+		this.buttons.push("Down", 40);
+		this.buttons.push("Down", 83);
+		this.buttons.push("Trigger", 20);
+		this.inputs.push("Fire1", 0);
+		this.inputs.push("Fire2", 2);
 	}
 
 	GetInput(label)

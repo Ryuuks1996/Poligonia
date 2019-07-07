@@ -4,6 +4,7 @@ class Player extends GameObject
 	{
 		super( x, y, z, scene, obj3D, material);
 	
+		this.behaviors.AddBehavior();
 		//this.audioLisener = new THREE.AudioLisener();
 		//this.add( audioLisener );
 		
