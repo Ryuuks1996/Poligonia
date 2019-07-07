@@ -14,12 +14,9 @@ class GameObject
 			this.mesh.children[child].material = material;
 		}
 		//this.mesh = new THREE.Mesh( geometry, material );
-		
-		this.mesh.position.set(x,y,z);
+		this.transform = new Transform(x,y,z);
 		
 		scene.add(this.mesh);
-		
-		
 	}
 
 	AddBehaviors(behavior)
@@ -36,25 +33,10 @@ class GameObject
 		}	
 	}
 	
-	Draw( buffer )
-	{
-		
-	}
-	
 	SetPosition(x,y,z)
 	{
-		this.mesh.position.set(x,y,z);
+		this.transform.SetPosition(x,y,z);
 	}
-	
-	Translate(x,y,z)
-    {
-        this.position.add(new THREE.Vector3(x,y,z));
-    }
-
-    Translate(vector3)
-    {
-        this.position.add(vector3);
-    }
 	
 	Rotate(rotation)
     {
