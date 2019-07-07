@@ -1,8 +1,8 @@
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
+
 var TIME = new THREE.Clock();
 var inputManager = new InputManager();
-
 var CubeTextureLoader = new THREE.CubeTextureLoader();
 var AudioLoader = new THREE.AudioLoader();
 
@@ -19,6 +19,25 @@ function PlayAudio(path,loop)
 	if(!loop)
 	{
 		AudioLisener.load();
+	}
+}
+
+function SetScene(id)
+{
+	switch(id)
+	{
+		case 0:
+			this.scene = new MainMenu();
+			break;
+		case 1:
+			this.scene = new GameScene();
+			break;	
+		case 2:
+			//this.scene = new Options();
+			break;
+		case 3:
+			//this.scene = new Instructions();
+			break;	
 	}
 }
 
@@ -47,16 +66,20 @@ function Init()
 	this.controller = new Controller();
 	
 	//GAME
-	this.gameScene = new GameScene();
+	SetScene(0);	
+	//this.gameScene = new GameScene();
+	//this.mainMenu = new MainMenu();
+	//this.options = new Options();
+	//this.instructions = new Instructions();
+
 }
 
 function Loop()
 {
 	requestAnimationFrame(Loop, 1000 / 60);
 	this.controller.Update();	
-	this.gameScene.Update();
-	
-	this.gameScene.Draw(this.renderer);
+	this.scene.Update();	
+	this.scene.Draw(this.renderer);
 }
 
 requestAnimationFrame(Loop, 1000 / 60);

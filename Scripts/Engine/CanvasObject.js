@@ -2,7 +2,6 @@ class CanvasObject
 {
     constructor(x, y, scene, material, w, h)
     {
-		
 		this.texture = material.map;
 		this.texture.magFilter = THREE.NearestFilter;
 		this.texture.minFilter = THREE.NearestFilter;	

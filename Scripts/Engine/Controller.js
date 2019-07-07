@@ -112,15 +112,18 @@ class InputManager
 		this.buttons.push(new Input("Trigger", 20));
 		this.buttons.push(new Input("Fire1", 0));
 		this.buttons.push(new Input("Fire2", 2));
+		this.buttons.push(new Input("Enter", 13));
+		this.buttons.push(new Input("Escape", 27));
+		
 	}
 
 	GetInput(label)
 	{
-		for(var i = 0 ; i < buttons.length; i++)
+		for(var i = 0 ; i < this.buttons.length; i++)
 		{
-			if(buttons[i].label == label)
+			if(this.buttons[i].label == label)
 			{
-				if(keyDown.includes(buttons[i].key) || keyPressed.includes(buttons[i].key))
+				if(keyDown.includes(this.buttons[i].key) || keyPressed.includes(this.buttons[i].key))
 				{
 					return true;
 				}
@@ -128,4 +131,7 @@ class InputManager
 		}
 		return false;
 	}
+	
 }
+
+
