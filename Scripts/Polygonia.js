@@ -1,6 +1,6 @@
 var WIDTH = window.innerWidth;
 var HEIGHT = window.innerHeight;
-var time = new THREE.Clock();
+var TIME = new THREE.Clock();
 var inputManager = new InputManager();
 
 var CubeTextureLoader = new THREE.CubeTextureLoader();

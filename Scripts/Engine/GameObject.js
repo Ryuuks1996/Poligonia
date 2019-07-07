@@ -2,9 +2,15 @@ class GameObject
 {
 	constructor( x, y, z, scene, obj3D, material)
 	{
-		
-		//if(material === undefined){ console.log("[undefined material]"); material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );}
-		//if(geometry === undefined){ console.log("[undefined Geometry]"); geometry = new THREE.BoxGeometry( 1, 1, 1 );}
+		this.scene = scene;
+		if(material === undefined)
+		{ 
+			material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+		}
+		if(geometry === undefined)
+		{ 
+			geometry = new THREE.BoxGeometry( 1, 1, 1 );
+		}
 		
 		this.behaviors = [];
 
@@ -56,10 +62,12 @@ class GameObject
 		this.mesh.rotation.add(rotation);
 	}
 	
-	Destroy(scene)
-	{
-		
-		scene.remove(this);
-	}
+	Destroy()
+    {
+        mesh.geometry.dispose();
+		mesh.dispose();
+		delete(mesh);
+		this.scene.remove(this);
+    }
 }
 

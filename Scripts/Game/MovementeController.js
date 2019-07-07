@@ -11,7 +11,7 @@ class MovementController extends Behaviour
 
     Update()
     {
-        this.speed = this.speed + this.acceleration*time.getDelta();
+        this.speed = this.speed + this.acceleration*TIME.getDelta();
         if(this.speed > this.maxSpeed)
         {
             this.speed = this.maxSpeed;
@@ -21,6 +21,6 @@ class MovementController extends Behaviour
 
     Move()
     {
-        gameObject.transform.Translate(this.direction*this.speed*time.getDelta());
+        gameObject.transform.Translate(this.direction*this.speed*TIME.getDelta());
     }
 }

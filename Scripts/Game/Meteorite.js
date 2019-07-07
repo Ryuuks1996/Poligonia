@@ -1,15 +1,12 @@
 class Meteorite extends GameObject
 {
-    constructor(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed)
+    constructor(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed, size)
     {
-        if(obj3D === undefined)
-        {
-            obj3D = new THREE.Mesh(new THREE.BoxGeometry(1,1,1),
-                                   new THREE.MeshBasicMaterial({color: 0x00ff00}));
-            material = new THREE.MeshBasicMaterial({color: 0x00ff00});
-        }
         super(x, y, z, scene, obj3D, material);
         this.mesh.lookAt(target.position);
+
+        this.life = life;
+        this.size = size;
 
         this.AddBehaviors(new MovementController(this, speed, acceleration, maxSpeed));
     }
@@ -17,6 +14,20 @@ class Meteorite extends GameObject
     Update()
     {
         super.Update();
+    }
+
+    GetDamage(damage)
+    {
+        this.life -= damage;
+    }
+
+    Destroy()
+    {
+        if(size > 1)
+        {
+            //Instanciar 2 meteoritos de size-1;
+        }
+        super.Destroy();
     }
 
 }
