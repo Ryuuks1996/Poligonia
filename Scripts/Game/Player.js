@@ -12,7 +12,7 @@ class Player extends GameObject
 	
 	Update()
 	{
-		
+		this.Translate(new THREE.Vector3(0.0,0.0,0.03));
 	}
 }
 

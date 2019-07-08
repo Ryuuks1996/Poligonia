@@ -1,9 +1,9 @@
-class Meteorite extends GameObject
+class Asteroid extends GameObject
 {
     constructor(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed, size)
     {
         super(x, y, z, scene, obj3D, material);
-        this.mesh.lookAt(target.position);
+        //this.mesh.lookAt(target.position);
 
         this.life = life;
         this.size = size;

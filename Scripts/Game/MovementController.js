@@ -1,4 +1,4 @@
-class MovementController extends Behaviour
+class MovementController extends Behavior
 {
     constructor(gameObject, speed, acceleration, maxSpeed)
     {
@@ -16,7 +16,7 @@ class MovementController extends Behaviour
         {
             this.speed = this.maxSpeed;
         }
-        Move();
+        this.Move();
     }
 
     Move()

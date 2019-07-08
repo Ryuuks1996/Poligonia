@@ -6,8 +6,8 @@ class MainMenu extends Scene
 		
 		this.Background = new CanvasObject(0,0,this.sceneHUD,GetMaterial("Material_Ship"),window.innerWidth,window.innerHeight);
 		
-		this.logo = new CanvasObject(0,200,this.sceneHUD,GetMaterial("Material_Ship"),300,300);
-		
+		this.logo = new CanvasObject(0,200,this.sceneHUD,GetMaterial("Material_Ship"),400,400);
+		 
 		this.textStart = new CanvasObject(0,-70,this.sceneHUD,GetMaterial("Material_Ship"),160,40);
 		this.textOptions = new CanvasObject(0,-140,this.sceneHUD,GetMaterial("Material_Ship"),160,40);
 		this.textInstructions = new CanvasObject(0,-210,this.sceneHUD,GetMaterial("Material_Ship"),160,40);
@@ -18,16 +18,16 @@ class MainMenu extends Scene
 		this.selector.AddPosition(this.textOptions.mesh.position);
 		this.selector.AddPosition(this.textInstructions.mesh.position);
 		this.selector.AddPosition(this.textExit.mesh.position);
-		//this.gameObjects.push(this.selector);
+		
+		this.gameObjects.push(this.selector);
 	}
 	
 	Update()
 	{
 		super.Update();
-		this.selector.Update();
-		if(inputManager.GetInput("Enter") || inputManager.GetInput("Trigger"))
+		//this.selector.Update();
+		if(inputManager.GetInputDown("Enter") || inputManager.GetInputDown("Trigger"))
 		{
-			console.log("idPos: "+this.selector.idPos);
 			switch(this.selector.idPos)
 			{
 				case 0:

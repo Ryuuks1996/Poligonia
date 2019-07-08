@@ -10,12 +10,12 @@ class SelectorMenu extends CanvasObject
 	
 	Update()
 	{
-			if(inputManager.GetInput("Up"))
+			if(inputManager.GetInputDown("Up"))
 			{
 				this.Move(-1);
 			}
 			
-			if(inputManager.GetInput("Down"))
+			if(inputManager.GetInputDown ("Down"))
 			{
 				this.Move(1);
 			}

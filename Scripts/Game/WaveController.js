@@ -1,3 +1,4 @@
+var TIME = new THREE.Clock(true);
 class WaveController
 {
     constructor(target, enemieAmount, scene, multiplier, thresholds, weights, radius, period)
@@ -13,19 +14,26 @@ class WaveController
         this.radius = radius;
         this.period = period;
         this.time = period;
+		
+		this.last = 0;
+		TIME.running = true;
+		console.log("ON? " + TIME.running);
     }
 
     Update()
     {
-        if(this.time === this.period)
+        if(this.time - this.last >= this.period)
         {
             this.SpawnWave();
+			this.last = this.time;
         }
-        time += TIME.getDelta();
+        this.time = TIME.elapsedTime;
+		console.log("T: "+this.time+" P: "+ this.period);
     }
 
     SpawnWave()
     {
+		console.log("spawn!");
         this.wave++;
         this.time = 0;
         var amount = Math.ceil(this.wave*this.multiplier*this.enemieAmount);
@@ -38,9 +46,9 @@ class WaveController
             var y = Math.random();
             var z = Math.random();
             var d = x+y+z;
-            x = x*radius/d;
-            y = y*radius/d;
-            z = z*radius/d;
+            x = x*this.radius/d;
+            y = y*this.radius/d;
+            z = z*this.radius/d;
 
             if(r > this.thresholds[2])
             {
@@ -48,15 +56,16 @@ class WaveController
             }
             else if(r > this.thresholds[1])
             {
-                this.enemies.push(new Meteorite(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed, 3));
+				
+                this.enemies.push(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 3));
             }
             else if(r > this.thresholds[0])
             {
-                this.enemies.push(new Meteorite(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed, 2));
+                this.enemies.push(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 2));
             }
             else
             {
-                this.enemies.push(new Meteorite(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed, 1));
+                this.enemies.push(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 1));
             }
         }
         

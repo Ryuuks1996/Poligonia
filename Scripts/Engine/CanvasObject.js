@@ -12,8 +12,7 @@ class CanvasObject
 		this.mesh.material.side = THREE.DoubleSide;
 	
 		this.mesh.position.set(x,y,0);
-		scene.add(this.mesh);
-		
+		scene.add(this.mesh);		
 	}
 	
 	Update()

@@ -109,12 +109,11 @@ class InputManager
 		this.buttons.push(new Input("Up", 87));
 		this.buttons.push(new Input("Down", 40));
 		this.buttons.push(new Input("Down", 83));
-		this.buttons.push(new Input("Trigger", 20));
+		this.buttons.push(new Input("Trigger", 32));
 		this.buttons.push(new Input("Fire1", 0));
 		this.buttons.push(new Input("Fire2", 2));
 		this.buttons.push(new Input("Enter", 13));
 		this.buttons.push(new Input("Escape", 27));
-		
 	}
 
 	GetInput(label)
@@ -123,7 +122,37 @@ class InputManager
 		{
 			if(this.buttons[i].label == label)
 			{
-				if(keyDown.includes(this.buttons[i].key) || keyPressed.includes(this.buttons[i].key))
+				if(keyPressed.includes(this.buttons[i].key))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	GetInputDown(label)
+	{
+		for(var i = 0 ; i < this.buttons.length; i++)
+		{
+			if(this.buttons[i].label == label)
+			{
+				if(keyDown.includes(this.buttons[i].key))
+				{
+					return true;
+				}
+			}
+		}
+		return false;
+	}
+	
+	GetInputUp(label)
+	{
+		for(var i = 0 ; i < this.buttons.length; i++)
+		{
+			if(this.buttons[i].label == label)
+			{
+				if(keyUp.includes(this.buttons[i].key))
 				{
 					return true;
 				}
