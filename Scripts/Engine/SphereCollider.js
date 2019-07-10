@@ -14,6 +14,7 @@ class SphereCollider extends Behavior
 	
 	Update()
 	{
+		super.Update();
 		this.center = this.gameObject.mesh.center;
 	}
 	
