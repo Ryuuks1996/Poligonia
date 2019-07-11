@@ -29,4 +29,9 @@ class Scene
 		buffer.render(this.scene,this.camera);
 		buffer.render(this.sceneHUD,this.cameraHUD);
 	}
+	
+	AddGameObject(object)
+	{
+		this.gameObjects.push(object);
+	}
 }

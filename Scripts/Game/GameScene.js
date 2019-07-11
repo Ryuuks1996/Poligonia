@@ -17,13 +17,13 @@ class GameScene extends Scene
 		this.camera.position.z = -20;
 		this.light = new THREE.AmbientLight(0xffffff); this.scene.add(this.light);
 		
-		this.player = new Player(0,-10,0,this.scene,Models[0],GetMaterial("Material_Ship"));
+		this.player = new Player(0,-10,0,this.scene,Models[0],GetMaterial("Material_Ship"),0.01,1,1,0.1,1,1);
 		this.gameObjects.push(this.player);
 		
 		this.miniMap = new MiniMap(this.sceneHUD);
 		this.miniMap.AddTarget(this.player,"Material_Ship",20);
 		
-		this.waveController = new WaveController(new THREE.Vector3(0,0,0),10,this.scene,1.1,[0.2,0.6,0.8],[0.002,0.006,0.008],5,40000);
+		this.waveController = new WaveController(new THREE.Vector3(0,0,0),10,this.scene,1.1,[0.2,0.6,0.8],[0.002,0.006,0.008],5,4000,this);
 		
 	}
 	
@@ -41,11 +41,18 @@ class GameScene extends Scene
 		playerPos.x + playerDir.x * -30 + playerUp.x * 10,
 		playerPos.y + playerDir.y * -30 + playerUp.y * 10,
 		playerPos.z + playerDir.z * -30 + playerUp.z * 10);
+		
+		this.camera.lookAt(playerPos);
 	}
 	
 	Draw( buffer )
 	{
 		super.Draw(buffer);
+	}
+	
+	AddObject(o)
+	{
+		this.gameObjects.push(o);
 	}
 }
 

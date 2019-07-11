@@ -21,6 +21,8 @@ function PlayAudio(path,loop)
 	}
 }
 
+
+
 function SetScene(id)
 {
 	switch(id)
@@ -38,6 +40,16 @@ function SetScene(id)
 			//this.scene = new Instructions();
 			break;	
 	}
+}
+
+function Instantiate(gameObjet)
+{
+	this.scene.AddGameObject(gameObjet);
+}
+
+function InstantiateHUD(gameObjet)
+{
+	
 }
 
 Init();

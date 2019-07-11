@@ -21,6 +21,6 @@ class MovementController extends Behavior
 
     Move()
     {
-        gameObject.transform.Translate(this.direction*this.speed*TIME.getDelta());
+        //this.gameObject.Translate(this.direction*this.speed*TIME.getDelta());
     }
 }

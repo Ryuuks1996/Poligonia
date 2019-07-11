@@ -83,7 +83,7 @@ class Controller
 			}
 		}
 
-		//keys.length = 0;
+		keys.length = 0;
 	}
 }
 

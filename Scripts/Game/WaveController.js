@@ -1,7 +1,8 @@
 var TIME = new THREE.Clock(true);
+TIME.running = true;
 class WaveController
 {
-    constructor(target, enemieAmount, scene, multiplier, thresholds, weights, radius, period)
+    constructor(target, enemieAmount, scene, multiplier, thresholds, weights, radius, period, add)
     {
         this.scene =scene;
         this.wave = 0;
@@ -16,19 +17,32 @@ class WaveController
         this.time = period;
 		
 		this.last = 0;
-		TIME.running = true;
 		console.log("ON? " + TIME.running);
+		TIME.start();
+		this.actualTime = TIME.startTime;
+		this.lastTime = this.actualTime;
+		this.counter = 0;
+		
+		this.add = add;
+		console.log("ADD: "+this.add);
     }
 
     Update()
     {
-        if(this.time - this.last >= this.period)
+        if(this.time >= this.period)
         {
             this.SpawnWave();
-			this.last = this.time;
+			//this.last = this.time;
         }
-        this.time = TIME.elapsedTime;
-		console.log("T: "+this.time+" P: "+ this.period);
+		
+		TIME.start();
+		this.actualTime = TIME.startTime;
+        this.time += this.actualTime - this.lastTime;
+		this.lastTime = this.actualTime;
+		if(this.time >= this.counter*1000)
+		{
+			this.counter++;
+		}
     }
 
     SpawnWave()
@@ -36,6 +50,7 @@ class WaveController
 		console.log("spawn!");
         this.wave++;
         this.time = 0;
+		this.counter = 0;
         var amount = Math.ceil(this.wave*this.multiplier*this.enemieAmount);
         for(var i = 0; i < amount; i++)
         {
@@ -56,16 +71,24 @@ class WaveController
             }
             else if(r > this.thresholds[1])
             {
-				
-                this.enemies.push(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 3));
+				var a = new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 3);
+                this.enemies.push(a);
+				console.log("A: "+a);
+				this.add.AddObject(a);
             }
             else if(r > this.thresholds[0])
             {
-                this.enemies.push(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 2));
+				var a = new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 3);
+                this.enemies.push(a);
+				console.log("A: "+a);
+				this.add.AddObject(a)
             }
             else
             {
-                this.enemies.push(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 1));
+				var a = new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 3);
+                this.enemies.push(a);
+				console.log("A: "+a);
+				this.add.AddObject(a)
             }
         }
         
