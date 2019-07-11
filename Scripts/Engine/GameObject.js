@@ -36,9 +36,9 @@ class GameObject
 	
 	Update()
 	{
-		for(b in this.behaviors)
+		for(var i = 0; i < this.behaviors.length; i++)
 		{
-			b.Update();
+			this.behaviors[i].Update();
 		}	
 	}
 	
@@ -68,6 +68,21 @@ class GameObject
 		this.mesh.dispose();
 		delete(this.mesh);
 		this.scene.remove(this);
-    }
+	}
+	
+	OnCollisionEnter(collider)
+	{
+
+	}
+
+	OnCollisionStay(collider)
+	{
+
+	}
+
+	OnCollisionExit(collider)
+	{
+
+	}
 }
 

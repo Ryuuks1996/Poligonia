@@ -1,30 +1,19 @@
 class CollisionManager
 {
-	constructor(sphereColliders)
+	constructor()
 	{
-		this.sphereColliders = sphereColliders;
+		this.colliders = [];
 	}
 	
 	Update()
 	{
-		for(int i = 0; i < this.sphereColliders.length; i++)
+		for(var i = 0; i < this.colliders.length; i++)
 		{
-			for(int j = 1; j < this.sphereColliders.length; j++)
+			for(var j = 0; j < this.colliders.length; j++)
 			{
-				var isCollision = this.sphereColliders[i].CheckCollision(this.sphereColliders[j]);
-				if(isCollision)
+				if(i != j)
 				{
-					var isEnterCollision = this.sphereColliders[i].CheckListContainSphere(
-						this.sphereColliders[i].collisionEnters, this.sphereColliders[i]);
-			
-					if(!isEnterCollision)
-					{
-						var isStayCollision = this.sphereColliders[i].CheckListContainSphere(
-							this.sphereColliders[i].collisionStays, this.sphereColliders[i]);
-						
-						if(!isStayCollision)
-							this.sphereColliders[i].collisionEnters.add(this.sphereColliders[i]);
-					}
+					this.colliders[i].CheckCollision();
 				}
 			}
 		}

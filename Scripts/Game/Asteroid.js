@@ -3,7 +3,7 @@ class Asteroid extends GameObject
     constructor(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed, size)
     {
         super(x, y, z, scene, obj3D, material);
-        //this.mesh.lookAt(target.position);
+        this.mesh.lookAt(target.mesh.position);
 
         this.life = life;
         this.size = size;
@@ -19,6 +19,10 @@ class Asteroid extends GameObject
     GetDamage(damage)
     {
         this.life -= damage;
+        if(this.life <= 0)
+        {
+            this.Destroy();
+        }
     }
 
     Destroy()
@@ -28,6 +32,14 @@ class Asteroid extends GameObject
             //Instanciar 2 meteoritos de size-1;
         }
         super.Destroy();
+    }
+
+    OnCollisionEnter(collider)
+    {
+        if(collider.gameObject instanceof Porjectile)
+        {
+            this.GetDamage(collider.GameObject.damage);
+        }
     }
 
 }
