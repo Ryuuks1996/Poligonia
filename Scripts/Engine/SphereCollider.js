@@ -18,19 +18,25 @@ class SphereCollider extends Behavior
 		this.center = this.gameObject.mesh.center;
 	}
 	
-	SphereCollision(sphereCollider)
+	CheckListContainSphere(list, sphereCollider)
+	{
+		for(int i = 0; i < list.length; i++)
+		{
+			if(list[i] == sphereCollider)
+				return true;
+		}
+		
+		return false;
+	}
+	
+	CheckCollision(sphereCollider)
 	{
 		var radiusSum = this.radius + sphereCollider.radius;
-		
-		/*var distance = sqrt(pow(this.center.x - sphereCollider.center.x, 2) +
-						pow(this.center.y - sphereCollider.center.y, 2) + 
-						pow(this.center.z - sphereCollider.center.z, 2));*/
-						
 		var distance = this.position.distanceTo(sphereCollider.position);
-						
+		
 		if(distance <= radiusSum){
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 		//return distance <= radiusSum ? true : false;
