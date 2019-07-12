@@ -52,7 +52,7 @@ function FindGameObjects(tag)
 	var objects = [];
 	for(var i = 0; i < this.scene.gameObjects.length; i++)
 	{
-		if(this.scene.gameObjects[i].tag === tag)
+		if(this.scene.gameObjects[i].tag == tag)
 		{
 			objects.push(this.scene.gameObjects[i]);
 		}
@@ -64,12 +64,12 @@ function FindGameObject(tag)
 {
 	for(var i = 0; i < this.scene.gameObjects.length; i++)
 	{
-		if(this.scene.gameObjects[i].tag === tag)
+		if(this.scene.gameObjects[i].tag == tag)
 		{
+			console.log(this.scene.gameObjects[i].tag);
 			return(this.scene.gameObjects[i]);
 		}
 	}
-	return undefined;
 }
 
 function InstantiateHUD(gameObjet)

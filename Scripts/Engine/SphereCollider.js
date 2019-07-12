@@ -8,7 +8,9 @@ class SphereCollider extends Behavior
 										this.gameObject.mesh.position.z);
 		
 		this.center = this.gameObject.mesh.center;
-		this.radius = Math.ceil((gameObject.getWorldScale.x + gameObject.getWorldScale.y + gameObject.getWorldScale.z)/3);
+		var scale = this.gameObject.mesh.getWorldScale(scale);
+		//console.log(scale);
+		this.radius = Math.ceil((scale.x + scale.y + scale.z)/3);
 		this.collisionEnters = [];
 		this.collisionStays = [];
 		this.collisionExit = [];

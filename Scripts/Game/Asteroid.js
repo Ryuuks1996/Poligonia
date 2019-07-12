@@ -15,7 +15,6 @@ class Asteroid extends GameObject
         this.life = size;
         this.size = size;
         this.speed = (0.0001/(this.size*this.size));
-        console.log("Speed: "+this.speed);
 
         this.AddBehaviors(new MovementController(this, this.speed, 0, this.speed));
         this.AddBehaviors(new SphereCollider(this));

@@ -5,7 +5,7 @@ class GameObject
 		this.scene = scene;
 		if(material === undefined)
 		{ 
-			material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 1, transparent: true} );
+			material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 1, transparent: false} );
 		}
 		if(obj3D === undefined)
 		{ 

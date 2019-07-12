@@ -22,7 +22,7 @@ class WaveController
         {
             this.SpawnWave();
         }
-        if(FindGameObject("Asteroid") === undefined || FindGameObject("Mine") === undefined)
+        if(FindGameObject("Asteroid") === undefined && FindGameObject("Mine") === undefined)
         {
             this.SpawnWave();
         }
@@ -32,10 +32,9 @@ class WaveController
 
     SpawnWave()
     {
-        console.log("Spawn");
         this.wave++;
         this.time = 0;
-        var amount = Math.ceil(this.wave*this.multiplier*this.enemieAmount);
+        var amount = Math.ceil(this.multiplier*this.enemieAmount);
         for(var i = 0; i < amount; i++)
         {
             //enemie type
@@ -52,21 +51,17 @@ class WaveController
             if(r > this.thresholds[2])
             {
                 //instance mines
-                console.log("mine");
             }
             else if(r > this.thresholds[1])
             {
-                console.log("a");
                 Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 3));
             }
             else if(r > this.thresholds[0])
             {
-                console.log("b");
                 Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 2));
             }
             else
             {
-                console.log("c");
                 Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1));
             }
         }
