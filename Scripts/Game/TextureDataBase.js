@@ -5,7 +5,11 @@ var Materials = []; Materials[0] = []; Materials[1] = [];
 function CreateMaterial(path,tag)
 {
 	var texture = TextureLoader.load(path);
-	Materials[0].push(new THREE.MeshLambertMaterial({map: texture, needsUpdate: true}));
+	var material = new THREE.MeshLambertMaterial({map: texture, needsUpdate: true})
+	// material.side = THREE.DoubleSide;
+	material.depthWrite = false;
+	Materials[0].push(material);
+	
 	Materials[1].push(tag); 
 }
 

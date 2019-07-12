@@ -24,6 +24,7 @@ class GameObject
 		//this.mesh = new THREE.Mesh( geometry, material );
 		this.mesh.position.set(x,y,z);
 		this.rotation = new THREE.Vector3();
+	
 		
 		scene.add(this.mesh);
 	}

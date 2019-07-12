@@ -5,6 +5,9 @@ var keyUp = [];
 var keyPressed = [];
 var last = [];
 
+var MouseX = 0.0;
+var MouseY = 0.0;
+
 document.addEventListener('keydown', function(event) 
 {
 	if(!keys.includes(event.keyCode))
@@ -40,6 +43,12 @@ document.addEventListener('onmouseup', function(event)
 			break;
 		}
 	}
+});
+
+document.addEventListener('mousemove',function(event)
+{
+	MouseX = event.x;
+	MouseY = event.y;	
 });
 
 

@@ -1,14 +1,14 @@
 class Projectile extends GameObject
 {
-	constructor()
+	constructor(x,y,z,scene,obj3D,material)
 	{
+		super(x,y,z,scene,obj3D,material);
+		
+		this.AddBehaviors(new MovementController(this,0.0001,0,10));
 	}
 	
 	Update()
 	{
-	}
-	
-	Render()
-	{
+		super.Update();		
 	}
 }

@@ -25,24 +25,28 @@ class Player extends GameObject
 	
 	Update()
 	{
+		//var VecMouse = new THREE.Vector3(MouseX-(window.innerWidth/2),MouseY-(window.innerHeight/2),0);		
+		this.mesh.rotateY(-((MouseX-(window.innerWidth/2))/(window.innerWidth/2)) * 0.01);
+		this.mesh.rotateX(((MouseY-(window.innerHeight/2))/(window.innerHeight/2)) * 0.01);
 		
 		this.direction = this.mesh.getWorldDirection(this.direction);
 		
+		//this.mesh.lookAt(new THREE.Vector3(this.direction.x,this.direction.y,this.direction.z));
+		
 		var dir = new THREE.Vector3(
-			this.direction.x * this.speed * 10,
-			this.direction.y * this.speed * 10,
-			this.direction.z * this.speed * 10);
-				
+			this.direction.x * this.speed * time.DeltaTime(),
+			this.direction.y * this.speed * time.DeltaTime(),
+			this.direction.z * this.speed * time.DeltaTime());				
 		this.Translate(dir);		
 		
 	
 		if(inputManager.GetInput("Left"))
 		{
-			this.mesh.rotateY(0.1);
+			this.mesh.rotateY(0.01);
 		}
 		else if(inputManager.GetInput("Right"))
 		{
-			this.mesh.rotateY(-0.1);
+			this.mesh.rotateY(-0.01);
 		}
 		
 		if(inputManager.GetInput("Down"))
@@ -51,22 +55,20 @@ class Player extends GameObject
 		}
 		else if(inputManager.GetInput("Up"))
 		{
-			this.speed = Math.max(this.minSpeed,Math.min(this.speed + this.acceleration,this.maxSpeed));
-			
+			this.speed = Math.max(this.minSpeed,Math.min(this.speed + this.acceleration,this.maxSpeed));			
 		}
 		else
 		{
 			this.speed = Math.max(this.minSpeed,Math.min(this.speed - (this.acceleration/5),this.maxSpeed));
 		}
 		
-		// esto debe ser cambiado cuando el sistema de tiempo este funcionado correctamente
 		if(this.time >= this.coldDown && inputManager.GetInput("Trigger"))
 		{
 			this.time = 0;
 			this.Shoot();
 		}
 		
-		this.time++;
+		this.time += time.DeltaTime();
 		
 	}
 	
@@ -74,8 +76,17 @@ class Player extends GameObject
 	{
 		for(var i = 0 ; i < this.gunAmount; i++)
 		{
-			//intantiate
+			var pos = this.mesh.position.clone();
+			var projectile = new Projectile(pos.x,pos.y,pos.z,this.scene,Models[0].clone(),GetMaterial("Material_Ship"));
+			var dir = new THREE.Vector3(
+				this.direction.x + projectile.mesh.position.x,
+				this.direction.y + projectile.mesh.position.y,
+				this.direction.z + projectile.mesh.position.z,
+				);
+			projectile.mesh.lookAt(dir);
+			Instantiate(projectile);
 		}
+		
 	}
 }
 
