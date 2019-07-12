@@ -4,7 +4,7 @@ class Projectile extends GameObject
 	{
 		super(x,y,z,scene,obj3D,material);
 		
-		this.AddBehaviors(new MovementController(this,0.0001,0,10));
+		this.AddBehaviors(new MovementController(this,0.1,0,10));
 	}
 	
 	Update()

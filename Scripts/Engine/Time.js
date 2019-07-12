@@ -22,12 +22,12 @@ class Time
 
     DeltaTime()
     {
-        return this.deltaTime;
+        return this.deltaTime/1000;
     }
 
     ElpasedTime()
     {
-        return this.elapsedTime;
+        return this.elapsedTime/1000;
     }
 }
 
