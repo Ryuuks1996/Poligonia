@@ -3,6 +3,7 @@ class Player extends GameObject
 	constructor( x, y, z, scene, obj3D, material,minSpeed,maxSpeed,velocity,acceleration,coldDown,gunAmount)
 	{
 		super( x, y, z, scene, obj3D, material);
+		this.tag = "player";
 
 		this.minSpeed = minSpeed;
         this.maxSpeed = maxSpeed;

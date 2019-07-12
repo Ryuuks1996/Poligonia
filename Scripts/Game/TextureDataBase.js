@@ -24,6 +24,7 @@ function GetMaterial(tag)
 
 //Ship
 CreateMaterial('Assets2D/Ship.jpg',"Material_Ship");
+CreateMaterial('Assets2D/miniMap_Background.png',"Background_MiniMap");
 
 //Enemy
 CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Small");
@@ -53,7 +54,7 @@ CreateMaterial('Assets2D/Ship.jpg',"Icon_PowerUp_Yellow");
 
 //Miselaneous
 CreateMaterial('Assets2D/Ship.jpg',"Icon_PlayerLife");
-CreateMaterial('Assets2D/Ship.jpg',"Background_MiniMap");
+
 
 
 
