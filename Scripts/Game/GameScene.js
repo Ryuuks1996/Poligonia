@@ -21,7 +21,8 @@ class GameScene extends Scene
 		this.gameObjects.push(this.player);
 		
 		this.miniMap = new MiniMap(this.sceneHUD,100);
-		this.miniMap.AddTarget(this.player,"Material_Ship",20);
+		this.AddMiniMap(this.player,"Material_Ship",20);
+		//this.miniMap.AddTarget(this.player,"Material_Ship",20);
 		
 		this.waveController = new WaveController(new THREE.Vector3(0,0,0),1,this.scene,1.1,[0.2,0.6,0.8],[0.002,0.006,0.008],150,4000,this);
 		
@@ -30,6 +31,7 @@ class GameScene extends Scene
 	Update()
 	{
 		super.Update();
+		
 		this.miniMap.Update();
 		this.waveController.Update();
 		var playerDir = new THREE.Vector3(0,0,0);
@@ -53,6 +55,11 @@ class GameScene extends Scene
 	AddObject(o)
 	{
 		this.gameObjects.push(o);
+	}
+	
+	AddMiniMap(object,materialTag,size)
+	{
+		this.miniMap.AddTarget(object,materialTag,size);
 	}
 }
 

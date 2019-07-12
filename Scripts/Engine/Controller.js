@@ -7,9 +7,11 @@ var last = [];
 
 document.addEventListener('keydown', function(event) 
 {
-	keys.push(event.keyCode);
+	if(!keys.includes(event.keyCode))
+	{
+		keys.push(event.keyCode);
+	}
 });
-
 
 document.addEventListener('keyup', function(event) 
 {
@@ -82,8 +84,8 @@ class Controller
 				keyUp.push(num);
 			}
 		}
-
-		keys.length = 0;
+		
+		//keys = [];
 	}
 }
 
