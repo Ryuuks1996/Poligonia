@@ -18,4 +18,22 @@ class CollisionManager
 			}
 		}
 	}
+
+	Add(collider)
+	{
+		this.colliders.push(collider);
+	}
+
+	Remove(collider)
+	{
+		for(var i = 0; i < this.colliders.length; i++)
+		{
+			if(this.colliders[i] === collider)
+			{
+				this.colliders.splice(i,1);
+			}
+		}
+	}
 }
+
+var collisionManager = new CollisionManager();

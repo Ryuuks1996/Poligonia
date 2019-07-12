@@ -47,6 +47,31 @@ function Instantiate(gameObjet)
 	this.scene.AddGameObject(gameObjet);
 }
 
+function FindGameObjects(tag)
+{
+	var objects = [];
+	for(var i = 0; i < this.scene.gameObjects.length; i++)
+	{
+		if(this.scene.gameObjects[i].tag === tag)
+		{
+			objects.push(this.scene.gameObjects[i]);
+		}
+	}
+	return objects;
+}
+
+function FindGameObject(tag)
+{
+	for(var i = 0; i < this.scene.gameObjects.length; i++)
+	{
+		if(this.scene.gameObjects[i].tag === tag)
+		{
+			return(this.scene.gameObjects[i]);
+		}
+	}
+	return undefined;
+}
+
 function InstantiateHUD(gameObjet)
 {
 	

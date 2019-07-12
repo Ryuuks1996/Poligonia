@@ -1,6 +1,6 @@
 class SphereCollider extends Behavior
 {
-	constructor(gameObject, radius)
+	constructor(gameObject)
 	{
 		super(gameObject);
 		this.position = new THREE.Vector3(this.gameObject.mesh.position.x, 
@@ -8,10 +8,11 @@ class SphereCollider extends Behavior
 										this.gameObject.mesh.position.z);
 		
 		this.center = this.gameObject.mesh.center;
-		this.radius = radius;
+		this.radius = Math.ceil((gameObject.getWorldScale.x + gameObject.getWorldScale.y + gameObject.getWorldScale.z)/3);
 		this.collisionEnters = [];
 		this.collisionStays = [];
 		this.collisionExit = [];
+		collisionManager.Add(this);
 	}
 	
 	Update()
@@ -74,5 +75,11 @@ class SphereCollider extends Behavior
 				this.RemoveCollider(this.collisionStays,collider);
 			}
 		}
+	}
+
+	Destroy()
+	{
+		collisionManager.Remove(this);
+		delete(this);
 	}
 }

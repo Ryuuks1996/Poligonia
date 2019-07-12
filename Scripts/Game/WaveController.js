@@ -2,7 +2,7 @@ var TIME = new THREE.Clock(true);
 TIME.running = true;
 class WaveController
 {
-    constructor(target, enemieAmount, scene, multiplier, thresholds, weights, radius, period, add)
+    constructor(target, enemieAmount, multiplier, thresholds, radius, period, scene)
     {
         this.scene =scene;
         this.wave = 0;
@@ -11,17 +11,18 @@ class WaveController
         this.enemieAmount = enemieAmount;
         this.multiplier = multiplier;
         this.thresholds = thresholds;
-        this.weights = weights;
         this.radius = radius;
         this.period = period;
         this.time = period;
-		
-		this.add = add;
     }
 
     Update()
     {
         if(this.time >= this.period)
+        {
+            this.SpawnWave();
+        }
+        if(FindGameObject("Asteroid") === undefined || FindGameObject("Mine") === undefined)
         {
             this.SpawnWave();
         }
@@ -44,9 +45,9 @@ class WaveController
             var y = Math.random()*2 - 1;
             var z = Math.random()*2 - 1;
             var d = Math.abs(x)+Math.abs(y)+Math.abs(z);
-            x = x*this.radius/d;
-            y = y*this.radius/d;
-            z = z*this.radius/d;
+            x = (x*this.radius/d) + (((Math.random()*0.2) - (Math.random()*0.2))*this.radius);
+            y = (y*this.radius/d) + (((Math.random()*0.2) - (Math.random()*0.2))*this.radius);
+            z = (z*this.radius/d) + (((Math.random()*0.2) - (Math.random()*0.2))*this.radius);
 
             if(r > this.thresholds[2])
             {
@@ -56,29 +57,18 @@ class WaveController
             else if(r > this.thresholds[1])
             {
                 console.log("a");
-                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.0001, 0, 10, 3));
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 3));
             }
             else if(r > this.thresholds[0])
             {
                 console.log("b");
-                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.0001, 0, 10, 3));
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 2));
             }
             else
             {
                 console.log("c");
-                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.0001, 0, 10, 3));
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1));
             }
         }
-        /*
-        var aux = 0;
-        for(var i = 0; i < this.thresholds.length; i++)
-        {
-            this.thresholds[i] *= this.weights[i];
-            aux += this.thresholds[i];
-        }
-        for(var i = 0; i < this.thresholds.length; i++)
-        {
-            this.thresholds[i]/aux;
-        }*/
     }
 }

@@ -64,6 +64,10 @@ class GameObject
 	
 	Destroy()
     {
+		for(var i = 0; i < this.behaviors.length; i++)
+		{
+			this.behaviors[i].Destroy();
+		}
         this.mesh.geometry.dispose();
 		this.mesh.dispose();
 		delete(this.mesh);

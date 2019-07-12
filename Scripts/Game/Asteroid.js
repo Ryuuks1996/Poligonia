@@ -1,6 +1,6 @@
 class Asteroid extends GameObject
 {
-    constructor(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed, size)
+    constructor(x, y, z, scene, obj3D, material, target, size)
     {
         super(x, y, z, scene, obj3D, material);
         try
@@ -11,11 +11,14 @@ class Asteroid extends GameObject
         {
             this.mesh.lookAt(new THREE.Vector3(0,0,0));
         }
-        this.tag = "Asteroid"+size;
-        this.life = life;
+        this.tag = "Asteroid";
+        this.life = size;
         this.size = size;
+        this.speed = (0.0001/(this.size*this.size));
+        console.log("Speed: "+this.speed);
 
-        this.AddBehaviors(new MovementController(this, speed, acceleration, maxSpeed));
+        this.AddBehaviors(new MovementController(this, this.speed, 0, this.speed));
+        this.AddBehaviors(new SphereCollider(this));
     }
 
     Update()
@@ -29,23 +32,27 @@ class Asteroid extends GameObject
         if(this.life <= 0)
         {
             this.Destroy();
+            if(size > 1)
+            {
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, size-1));
+            }
         }
     }
 
     Destroy()
     {
-        if(size > 1)
-        {
-            //Instanciar 2 meteoritos de size-1;
-        }
         super.Destroy();
     }
 
     OnCollisionEnter(collider)
     {
-        if(collider.gameObject instanceof Porjectile)
+        if(collider.gameObject.tag === "Porjectile")
         {
             this.GetDamage(collider.GameObject.damage);
+        }
+        else if(collider.gameObject.tag === "Core")
+        {
+            this.Destroy();
         }
     }
 

@@ -5,13 +5,7 @@ class Behavior
         this.gameObject = gameObject;
     }
 
-    Start()
-    {
-
-    }
-
-    Update()
-    {
-        
-    }
+    Start(){}
+    Update(){}
+    Destroy(){}
 }
