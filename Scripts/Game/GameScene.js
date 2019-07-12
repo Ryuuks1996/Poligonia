@@ -23,7 +23,7 @@ class GameScene extends Scene
 		this.miniMap = new MiniMap(this.sceneHUD);
 		this.miniMap.AddTarget(this.player,"Material_Ship",20);
 		
-		this.waveController = new WaveController(new THREE.Vector3(0,0,0),10,this.scene,1.1,[0.2,0.6,0.8],[0.002,0.006,0.008],5,4000,this);
+		this.waveController = new WaveController(new THREE.Vector3(0,0,0),10,this.scene,1.1,[0.2,0.6,0.8],[0.002,0.006,0.008],150,4000,this);
 		
 	}
 	

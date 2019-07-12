@@ -88,6 +88,7 @@ function Init()
 function Loop()
 {
 	requestAnimationFrame(Loop, 1000 / 60);
+	time.Update();
 	this.controller.Update();	
 	this.scene.Update();	
 	this.scene.Draw(this.renderer);

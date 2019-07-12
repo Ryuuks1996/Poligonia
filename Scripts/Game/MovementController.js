@@ -6,12 +6,13 @@ class MovementController extends Behavior
         this.speed = speed;
         this.acceleration = acceleration;
         this.maxSpeed = maxSpeed;
-        this.direction = this.gameObject.mesh.getWorldDirection;
+        this.direction = new THREE.Vector3();
+        this.gameObject.mesh.getWorldDirection(this.direction);
     }
 
     Update()
     {
-        this.speed = this.speed + this.acceleration*TIME.getDelta();
+        this.speed = this.speed + this.acceleration*time.DeltaTime();
         if(this.speed > this.maxSpeed)
         {
             this.speed = this.maxSpeed;
@@ -21,6 +22,6 @@ class MovementController extends Behavior
 
     Move()
     {
-        //this.gameObject.Translate(this.direction*this.speed*TIME.getDelta());
+        this.gameObject.Translate(this.direction*this.speed*time.DeltaTime());
     }
 }

@@ -16,15 +16,7 @@ class WaveController
         this.period = period;
         this.time = period;
 		
-		this.last = 0;
-		console.log("ON? " + TIME.running);
-		TIME.start();
-		this.actualTime = TIME.startTime;
-		this.lastTime = this.actualTime;
-		this.counter = 0;
-		
 		this.add = add;
-		console.log("ADD: "+this.add);
     }
 
     Update()
@@ -32,35 +24,26 @@ class WaveController
         if(this.time >= this.period)
         {
             this.SpawnWave();
-			//this.last = this.time;
         }
 		
-		TIME.start();
-		this.actualTime = TIME.startTime;
-        this.time += this.actualTime - this.lastTime;
-		this.lastTime = this.actualTime;
-		if(this.time >= this.counter*1000)
-		{
-			this.counter++;
-		}
+        this.time += time.DeltaTime();
     }
 
     SpawnWave()
     {
-		console.log("spawn!");
+        console.log("Spawn");
         this.wave++;
         this.time = 0;
-		this.counter = 0;
         var amount = Math.ceil(this.wave*this.multiplier*this.enemieAmount);
         for(var i = 0; i < amount; i++)
         {
             //enemie type
             var r = Math.random();
             //enemie coordinates
-            var x = Math.random();
-            var y = Math.random();
-            var z = Math.random();
-            var d = x+y+z;
+            var x = Math.random()*2 - 1;
+            var y = Math.random()*2 - 1;
+            var z = Math.random()*2 - 1;
+            var d = Math.abs(x)+Math.abs(y)+Math.abs(z);
             x = x*this.radius/d;
             y = y*this.radius/d;
             z = z*this.radius/d;
@@ -68,30 +51,25 @@ class WaveController
             if(r > this.thresholds[2])
             {
                 //instance mines
+                console.log("mine");
             }
             else if(r > this.thresholds[1])
             {
-				var a = new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 3);
-                this.enemies.push(a);
-				console.log("A: "+a);
-				this.add.AddObject(a);
+                console.log("a");
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.0001, 0, 10, 3));
             }
             else if(r > this.thresholds[0])
             {
-				var a = new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 3);
-                this.enemies.push(a);
-				console.log("A: "+a);
-				this.add.AddObject(a)
+                console.log("b");
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.0001, 0, 10, 3));
             }
             else
             {
-				var a = new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.1, 0, 10, 3);
-                this.enemies.push(a);
-				console.log("A: "+a);
-				this.add.AddObject(a)
+                console.log("c");
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1, 0.0001, 0, 10, 3));
             }
         }
-        
+        /*
         var aux = 0;
         for(var i = 0; i < this.thresholds.length; i++)
         {
@@ -101,6 +79,6 @@ class WaveController
         for(var i = 0; i < this.thresholds.length; i++)
         {
             this.thresholds[i]/aux;
-        }
+        }*/
     }
 }

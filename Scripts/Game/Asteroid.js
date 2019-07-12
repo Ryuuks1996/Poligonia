@@ -3,8 +3,15 @@ class Asteroid extends GameObject
     constructor(x, y, z, scene, obj3D, material, target, life, speed, acceleration, maxSpeed, size)
     {
         super(x, y, z, scene, obj3D, material);
-        this.mesh.lookAt(target.mesh.position);
-
+        try
+        {
+            this.mesh.lookAt(target.mesh.position);
+        }
+        catch(e)
+        {
+            this.mesh.lookAt(new THREE.Vector3(0,0,0));
+        }
+        this.tag = "Asteroid"+size;
         this.life = life;
         this.size = size;
 

@@ -5,11 +5,11 @@ class GameObject
 		this.scene = scene;
 		if(material === undefined)
 		{ 
-			material = new THREE.MeshBasicMaterial( {color: 0x00ff00} );
+			material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 1, transparent: true} );
 		}
 		if(obj3D === undefined)
 		{ 
-			obj3D = new THREE.Mesh( new THREE.BoxGeometry( 1, 1, 1 ),material);
+			obj3D = new THREE.Mesh( new THREE.BoxGeometry( 5, 5, 5 ),material);
 		}
 		
 		this.behaviors = [];
