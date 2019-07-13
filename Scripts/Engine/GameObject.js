@@ -5,11 +5,13 @@ class GameObject
 		this.scene = scene;
 		if(material === undefined)
 		{ 
-			material = new THREE.MeshBasicMaterial( {color: 0x00ff00, opacity: 1, transparent: false} );
+			material = new THREE.MeshNormalMaterial();
 		}
 		if(obj3D === undefined)
 		{ 
 			obj3D = new THREE.Mesh( new THREE.BoxGeometry( 5, 5, 5 ),material);
+			obj3D.geometry.computeFaceNormals();
+			obj3D.geometry.computeVertexNormals();
 		}
 		
 		this.behaviors = [];
@@ -25,7 +27,7 @@ class GameObject
 		this.mesh.position.set(x,y,z);
 		this.rotation = new THREE.Vector3();
 	
-		
+		this.destroyed = false
 		scene.add(this.mesh);
 	}
 
@@ -37,10 +39,13 @@ class GameObject
 	
 	Update()
 	{
-		for(var i = 0; i < this.behaviors.length; i++)
+		if(!this.destroyed)
 		{
-			this.behaviors[i].Update();
-		}	
+			for(var i = 0; i < this.behaviors.length; i++)
+			{
+				this.behaviors[i].Update();
+			}	
+		}
 	}
 	
 	SetPosition(x,y,z)
@@ -65,14 +70,16 @@ class GameObject
 	
 	Destroy()
     {
+		this.destroyed = true;
 		for(var i = 0; i < this.behaviors.length; i++)
 		{
 			this.behaviors[i].Destroy();
 		}
         this.mesh.geometry.dispose();
-		this.mesh.dispose();
-		delete(this.mesh);
+		this.mesh.material.dispose();
+		this.mesh = undefined;
 		this.scene.remove(this);
+		delete(this);
 	}
 	
 	OnCollisionEnter(collider)

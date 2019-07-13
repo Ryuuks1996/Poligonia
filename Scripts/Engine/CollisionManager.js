@@ -13,7 +13,7 @@ class CollisionManager
 			{
 				if(i != j)
 				{
-					this.colliders[i].CheckCollision();
+					this.colliders[i].CheckCollision(this.colliders[j]);
 				}
 			}
 		}

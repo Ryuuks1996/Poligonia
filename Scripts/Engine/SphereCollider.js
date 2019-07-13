@@ -1,16 +1,15 @@
 class SphereCollider extends Behavior
 {
-	constructor(gameObject)
+	constructor(gameObject,radius)
 	{
 		super(gameObject);
 		this.position = new THREE.Vector3(this.gameObject.mesh.position.x, 
 										this.gameObject.mesh.position.y, 
 										this.gameObject.mesh.position.z);
-		
-		this.center = this.gameObject.mesh.center;
-		var scale = this.gameObject.mesh.getWorldScale(scale);
+		var scale = new THREE.Vector3(0,0,0);
+		scale = this.gameObject.mesh.getWorldScale(scale);
 		//console.log(scale);
-		this.radius = Math.ceil((scale.x + scale.y + scale.z)/3);
+		this.radius = radius;
 		this.collisionEnters = [];
 		this.collisionStays = [];
 		this.collisionExit = [];
@@ -20,7 +19,7 @@ class SphereCollider extends Behavior
 	Update()
 	{
 		super.Update();
-		this.center = this.gameObject.mesh.center;
+		this.position = this.gameObject.mesh.position;
 		for(var i = 0; i < this.collisionEnters.length; i++)
 		{
 			this.gameObject.OnCollisionEnter(this.collisionEnters[i]);
@@ -48,7 +47,7 @@ class SphereCollider extends Behavior
 	CheckCollision(collider)
 	{
 		var radiusSum = this.radius + collider.radius;
-		var distance = this.center.distanceTo(collider.center);
+		var distance = this.position.distanceTo(collider.position);
 		
 		this.AddCollision(collider, distance <= radiusSum);
 	}

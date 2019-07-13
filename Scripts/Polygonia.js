@@ -66,7 +66,6 @@ function FindGameObject(tag)
 	{
 		if(this.scene.gameObjects[i].tag == tag)
 		{
-			console.log(this.scene.gameObjects[i].tag);
 			return(this.scene.gameObjects[i]);
 		}
 	}

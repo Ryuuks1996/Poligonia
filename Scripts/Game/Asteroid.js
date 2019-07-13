@@ -17,7 +17,7 @@ class Asteroid extends GameObject
         this.speed = (0.1/(this.size*this.size));
 
         this.AddBehaviors(new MovementController(this, this.speed, 0, this.speed));
-        this.AddBehaviors(new SphereCollider(this));
+        this.AddBehaviors(new SphereCollider(this,3.5));
     }
 
     Update()
@@ -41,18 +41,11 @@ class Asteroid extends GameObject
     Destroy()
     {
         super.Destroy();
+        delete(this);
     }
 
     OnCollisionEnter(collider)
     {
-        if(collider.gameObject.tag === "Porjectile")
-        {
-            this.GetDamage(collider.GameObject.damage);
-        }
-        else if(collider.gameObject.tag === "Core")
-        {
-            this.Destroy();
-        }
     }
 
 }
