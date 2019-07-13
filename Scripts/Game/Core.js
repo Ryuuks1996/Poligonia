@@ -16,24 +16,18 @@ class Core extends GameObject
     GetDamage(damage)
     {
         this.life -= damage;
-        console.log(this.life);
         if(this.life <= 0)
         {
-            this.Destroy();
+            Destroy(this)
         }
-    }
-
-    Destroy()
-    {
-        super.Destroy();
     }
 
     OnCollisionEnter(collider)
     {
-        console.log(collider.gameObject.tag);
         if(collider.gameObject.tag == "Asteroid")
         {
             this.GetDamage(collider.gameObject.size);
+            console.log(this.life);
             collider.gameObject.Destroy();
         }
     }

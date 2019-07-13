@@ -20,7 +20,7 @@ class GameScene extends Scene
 		//this.scene.add( this.light );
 		
 		this.core = new Core(100,this.scene,undefined,undefined);
-		this.player = new Player(0,-10,0,this.scene,Models[0],GetMaterial("Material_Ship"),1,1,1,0.1,1000,1);
+		this.player = new Player(0,-10,0,this.scene,Models[0],GetMaterial("Material_Ship"),10,20,1,1,0.5,1);
 		this.gameObjects.push(this.player);
 		this.gameObjects.push(this.core); 
 		

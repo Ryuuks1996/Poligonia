@@ -47,6 +47,20 @@ function Instantiate(gameObjet)
 	this.scene.AddGameObject(gameObjet);
 }
 
+Destroy(gameObject)
+{
+	gameObject.destroyed = true;
+	for(var i = 0; i < gameObject.behaviors.length; i++)
+	{
+		gameObject.behaviors[i].Destroy();
+	}
+	gameObject.mesh.geometry.dispose();
+	gameObject.mesh.material.dispose();
+	this.scene.remove(gameObject.mesh);
+	gameObject.mesh = undefined;
+	delete(gameObject);
+}
+
 function FindGameObjects(tag)
 {
 	var objects = [];

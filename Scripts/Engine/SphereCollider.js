@@ -81,6 +81,6 @@ class SphereCollider extends Behavior
 	Destroy()
 	{
 		collisionManager.Remove(this);
-		delete(this);
+		super.Destroy();
 	}
 }
