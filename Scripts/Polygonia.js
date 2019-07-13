@@ -4,14 +4,14 @@ var HEIGHT = window.innerHeight;
 var inputManager = new InputManager();
 var CubeTextureLoader = new THREE.CubeTextureLoader();
 var AudioLoader = new THREE.AudioLoader();
-
+/*
 function Destroy(scene,mesh)
 {
 	mesh.geometry.dispose();
 	scene.remove(mesh);
 	mesh.dispose();
 	delete(mesh);
-}
+}*/
 
 function PlayAudio(path,loop)
 {
@@ -49,13 +49,18 @@ function Instantiate(gameObjet)
 
 function Destroy(gameObject)
 {
+	console.log(gameObject.tag);
+	if(gameObject === undefined) return;
+	if(gameObject.mesh === undefined) return;
 	gameObject.destroyed = true;
 	for(var i = 0; i < gameObject.behaviors.length; i++)
 	{
 		gameObject.behaviors[i].Destroy();
 	}
-	gameObject.mesh.geometry.dispose();
-	gameObject.mesh.material.dispose();
+	if(gameObject.mesh.geometry !== undefined)
+		{gameObject.mesh.geometry.dispose();}
+	if(gameObject.mesh.material !== undefined)
+		{gameObject.mesh.material.dispose();}
 	this.scene.scene.remove(gameObject.mesh);
 	gameObject.mesh = undefined;
 	delete(gameObject);

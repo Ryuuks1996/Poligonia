@@ -24,10 +24,10 @@ class Core extends GameObject
 
     OnCollisionEnter(collider)
     {
-        if(collider.gameObject.tag == "Asteroid")
+        if(collider.gameObject.tag == "Asteroid"  && (!collider.gameObject.destroyed))
         {
             this.GetDamage(collider.gameObject.size);
-            console.log(this.life);
+            Destroy(collider.gameObject);
         }
     }
 }

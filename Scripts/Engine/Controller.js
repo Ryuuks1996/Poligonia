@@ -28,10 +28,25 @@ document.addEventListener('keyup', function(event)
 	}
 });
 
-document.addEventListener('onmousedown', function(event) 
+document.onmousedown = function(event) 
 {
-	keys.push(event.button);
-});
+	if(!keys.includes(event.button))
+	{
+		keys.push(event.button);
+	}
+};
+
+document.onmouseup = function(event) 
+{
+	for(var i = 0; i < keys.length; i++)
+	{
+		if(event.button == keys[i])
+		{
+			keys.splice(i,1);
+			break;
+		}
+	}
+};
 
 document.addEventListener('onmouseup', function(event) 
 {

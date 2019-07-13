@@ -21,7 +21,7 @@ class GameScene extends Scene
 		
 		//this.core = new Core(100, undefined, undefined);
 		//this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.5,1);
-		this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.5,1);
+		this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.25,1);
 		this.core = new Core(100, undefined, undefined);
 		this.AddGameObject(this.player);
 		this.AddGameObject(this.core);
