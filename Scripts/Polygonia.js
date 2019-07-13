@@ -49,6 +49,8 @@ function Instantiate(gameObjet)
 
 function Destroy(gameObject)
 {
+	if(gameObject === undefined) return;
+	if(gameObject.mesh === undefined) return;
 	gameObject.destroyed = true;
 	for(var i = 0; i < gameObject.behaviors.length; i++)
 	{

@@ -62,7 +62,7 @@ class SphereCollider extends Behavior
 				this.collisionStays.push(collider);
 				this.RemoveCollider(this.collisionEnters,collider);
 			}
-			else
+			else if(!this.collisionStays.includes(collider))
 			{
 				this.collisionEnters.push(collider);
 			}

@@ -4,10 +4,10 @@ class Asteroid extends GameObject
     {
         super(x, y, z, obj3D, material);
         this.mesh.lookAt(target);
-        this.tag = "Asteroid";
+        this.tag = "Asteroid";x
         this.life = size;
         this.size = size;
-        this.speed = (0.1/(this.size*this.size));
+        this.speed = 0;//(0.0/(this.size*this.size));
 
         this.AddBehaviors(new MovementController(this, this.speed, 0, this.speed));
         this.AddBehaviors(new SphereCollider(this,3.5));

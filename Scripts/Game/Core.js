@@ -6,6 +6,7 @@ class Core extends GameObject
         this.life = life;
         this.tag = "Core";
         this.AddBehaviors(new SphereCollider(this,3.5));
+        this.collision = 0;
     }
 
     Update()
@@ -24,10 +25,11 @@ class Core extends GameObject
 
     OnCollisionEnter(collider)
     {
-        if(collider.gameObject.tag == "Asteroid")
+        if(collider.gameObject.tag == "Asteroid" && (!collider.gameObject.destroyed))
         {
             this.GetDamage(collider.gameObject.size);
-            console.log(this.life);
+            this.collision++;
+            Destroy(collider.gameObject); 
         }
     }
 }

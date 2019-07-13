@@ -27,7 +27,7 @@ class Player extends GameObject
 	{
 		//var VecMouse = new THREE.Vector3(MouseX-(window.innerWidth/2),MouseY-(window.innerHeight/2),0);		
 		this.mesh.rotateY(-((MouseX-(window.innerWidth/2))/(window.innerWidth/2)) * 0.01);
-		this.mesh.rotateX(((MouseY-(window.innerHeight/2))/(window.innerHeight/2)) * 0.001);
+		this.mesh.rotateX(((MouseY-(window.innerHeight/2))/(window.innerHeight/2)) * 0.01);
 		
 		this.direction = this.mesh.getWorldDirection(this.direction);
 		
@@ -62,7 +62,7 @@ class Player extends GameObject
 			this.speed = Math.max(this.minSpeed,Math.min(this.speed - (this.acceleration/5),this.maxSpeed));
 		}
 		
-		if(this.time >= this.coldDown && inputManager.GetInput("Trigger"))
+		if(this.time >= this.coldDown && inputManager.GetInput("Fire1"))
 		{
 			this.time = 0;
 			this.Shoot();
@@ -77,7 +77,7 @@ class Player extends GameObject
 		for(var i = 0 ; i < this.gunAmount; i++)
 		{
 			var pos = this.mesh.position.clone();
-			var projectile = new Projectile(pos.x,pos.y,pos.z,Models[0].clone(),GetMaterial("Material_Ship"));
+			var projectile = new Projectile(pos.x,pos.y,pos.z,Models[0].clone(),GetMaterial("Material_Ship"),1,0.3,5);
 			var dir = new THREE.Vector3(
 				this.direction.x + projectile.mesh.position.x,
 				this.direction.y + projectile.mesh.position.y,

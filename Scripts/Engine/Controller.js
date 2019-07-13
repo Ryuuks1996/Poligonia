@@ -28,9 +28,23 @@ document.addEventListener('keyup', function(event)
 	}
 });
 
+
 document.addEventListener('onmousedown', function(event) 
 {
-	keys.push(event.button);
+	if(!keys.includes(event.button))
+	{
+		keys.push(event.button);
+	}
+	console.log("event.button");
+});
+
+document.addEventListener('onclick', function(event) 
+{
+	if(!keys.includes(event.button))
+	{
+		keys.push(event.button);
+	}
+	console.log("event.button");
 });
 
 document.addEventListener('onmouseup', function(event) 
