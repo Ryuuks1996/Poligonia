@@ -58,11 +58,6 @@ class GameScene extends Scene
 		super.Draw(buffer);
 	}
 	
-	AddObject(o)
-	{
-		this.gameObjects.push(o);
-	}
-	
 	AddMiniMap(object,materialTag,size)
 	{
 		this.miniMap.AddTarget(object,materialTag,size);
