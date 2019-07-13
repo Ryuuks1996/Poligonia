@@ -47,7 +47,7 @@ function Instantiate(gameObjet)
 	this.scene.AddGameObject(gameObjet);
 }
 
-Destroy(gameObject)
+function Destroy(gameObject)
 {
 	gameObject.destroyed = true;
 	for(var i = 0; i < gameObject.behaviors.length; i++)
@@ -56,7 +56,7 @@ Destroy(gameObject)
 	}
 	gameObject.mesh.geometry.dispose();
 	gameObject.mesh.material.dispose();
-	this.scene.remove(gameObject.mesh);
+	this.scene.scene.remove(gameObject.mesh);
 	gameObject.mesh = undefined;
 	delete(gameObject);
 }

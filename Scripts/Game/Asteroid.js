@@ -2,7 +2,7 @@ class Asteroid extends GameObject
 {
     constructor(x, y, z, obj3D, material, target, size)
     {
-        super(x, y, z, scene, obj3D, material);
+        super(x, y, z, obj3D, material);
         this.mesh.lookAt(target);
         this.tag = "Asteroid";
         this.life = size;
@@ -33,6 +33,11 @@ class Asteroid extends GameObject
 
     OnCollisionEnter(collider)
     {
+        /*
+        if(collider.gameObject.tag == "Core")
+        {
+            Destroy(this);
+        }*/
     }
 
 }

@@ -2,9 +2,8 @@ var TIME = new THREE.Clock(true);
 TIME.running = true;
 class WaveController
 {
-    constructor(target, enemieAmount, multiplier, thresholds, radius, period, scene)
+    constructor(target, enemieAmount, multiplier, thresholds, radius, period)
     {
-        this.scene =scene;
         this.wave = 0;
         this.target = target;
         this.enemies = [];
@@ -14,6 +13,9 @@ class WaveController
         this.radius = radius;
         this.period = period;
         this.time = period;
+
+        //Instantiate(new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.5,1));
+        //Instantiate(new Core(100, undefined, undefined));
     }
 
     Update()

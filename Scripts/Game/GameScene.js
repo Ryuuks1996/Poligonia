@@ -19,16 +19,18 @@ class GameScene extends Scene
 		//this.light = new THREE.AmbientLight( 0x404040 ); // soft white light
 		//this.scene.add( this.light );
 		
-		this.core = new Core(100,this.scene,undefined,undefined);
-		this.player = new Player(0,-10,0,this.scene,Models[0],GetMaterial("Material_Ship"),10,20,1,1,0.5,1);
-		this.gameObjects.push(this.player);
-		this.gameObjects.push(this.core); 
+		//this.core = new Core(100, undefined, undefined);
+		//this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.5,1);
+		this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.5,1);
+		this.core = new Core(100, undefined, undefined);
+		this.AddGameObject(this.player);
+		this.AddGameObject(this.core);
 		
 		this.miniMap = new MiniMap(this.sceneHUD,100);
 		this.AddMiniMap(this.player,"Material_Ship",20);
 		//this.miniMap.AddTarget(this.player,"Material_Ship",20);
 		
-		this.waveController = new WaveController(new THREE.Vector3(0,0,0),10,1.1,[0.2,0.6,0.8],500,4, this.scene);
+		this.waveController = new WaveController(new THREE.Vector3(0,0,0),10,1.1,[0.2,0.6,0.8],500,4);
 		
 	}
 	

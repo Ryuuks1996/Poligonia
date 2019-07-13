@@ -18,13 +18,13 @@ class GameObject
 		this.behaviors = [];
 
 		this.tag = "gameObject";
-
 		this.mesh = obj3D;
 		for(var child in this.mesh.children)
 		{
 			this.mesh.children[child].material = material;
 		}
 		//this.mesh = new THREE.Mesh( geometry, material );
+		//console.log(this.tag +": "+ this.mesh);
 		this.mesh.position.set(x,y,z);
 		this.rotation = new THREE.Vector3();
 	
