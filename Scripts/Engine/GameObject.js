@@ -1,12 +1,11 @@
 class GameObject
 {
-	constructor( x, y, z, obj3D, material)
+	constructor( x, y, z, scene, obj3D, material)
 	{
 		this.scene = scene;
 		if(material === undefined)
 		{ 
 			material = new THREE.MeshNormalMaterial();
-			material.depthWrite = false;
 		}
 		if(obj3D === undefined)
 		{ 
@@ -18,17 +17,18 @@ class GameObject
 		this.behaviors = [];
 
 		this.tag = "gameObject";
+
 		this.mesh = obj3D;
 		for(var child in this.mesh.children)
 		{
 			this.mesh.children[child].material = material;
 		}
 		//this.mesh = new THREE.Mesh( geometry, material );
-		//console.log(this.tag +": "+ this.mesh);
 		this.mesh.position.set(x,y,z);
 		this.rotation = new THREE.Vector3();
 	
-		this.destroyed = false;
+		this.destroyed = false
+		scene.add(this.mesh);
 	}
 
 	AddBehaviors(behavior)
@@ -68,8 +68,23 @@ class GameObject
 		this.mesh.rotation.add(rotation);
 	}
 	
+	Destroy()
+    {
+		this.destroyed = true;
+		for(var i = 0; i < this.behaviors.length; i++)
+		{
+			this.behaviors[i].Destroy();
+		}
+        this.mesh.geometry.dispose();
+		this.mesh.material.dispose();
+		this.mesh = undefined;
+		this.scene.remove(this);
+		delete(this);
+	}
+	
 	OnCollisionEnter(collider)
 	{
+
 	}
 
 	OnCollisionStay(collider)

@@ -7,5 +7,5 @@ class Behavior
 
     Start(){}
     Update(){}
-    Destroy(){delete(this);}
+    Destroy(){}
 }

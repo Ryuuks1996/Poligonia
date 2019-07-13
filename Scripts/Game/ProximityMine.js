@@ -1,8 +1,8 @@
 class ProximityMine extends GameObject
 {
-	constructor(x, y, z, obj3D, material, radiusFollow, radiusIgnite, radiusExplosion)
+	constructor(x, y, z, scene, obj3D, material, radiusFollow, radiusIgnite, radiusExplosion)
 	{
-		super(x, y, z, obj3D, material);
+		super(x, y, z, scene, obj3D, material);
 		
 		this.radiusFollow = radiusFollow;
 		this.radiusIgnite = radiusIgnite;

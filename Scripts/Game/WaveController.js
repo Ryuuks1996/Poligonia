@@ -2,8 +2,9 @@ var TIME = new THREE.Clock(true);
 TIME.running = true;
 class WaveController
 {
-    constructor(target, enemieAmount, multiplier, thresholds, radius, period)
+    constructor(target, enemieAmount, multiplier, thresholds, radius, period, scene)
     {
+        this.scene =scene;
         this.wave = 0;
         this.target = target;
         this.enemies = [];
@@ -13,9 +14,6 @@ class WaveController
         this.radius = radius;
         this.period = period;
         this.time = period;
-
-        //Instantiate(new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.5,1));
-        //Instantiate(new Core(100, undefined, undefined));
     }
 
     Update()
@@ -56,15 +54,15 @@ class WaveController
             }
             else if(r > this.thresholds[1])
             {
-                Instantiate(new Asteroid(x, y, z, undefined, undefined, this.target, 3));
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 3));
             }
             else if(r > this.thresholds[0])
             {
-                Instantiate(new Asteroid(x, y, z, undefined, undefined, this.target, 2));
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 2));
             }
             else
             {
-                Instantiate(new Asteroid(x, y, z, undefined, undefined, this.target, 1));
+                Instantiate(new Asteroid(x, y, z, this.scene, undefined, undefined, this.target, 1));
             }
         }
     }

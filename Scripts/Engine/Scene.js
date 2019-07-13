@@ -33,6 +33,6 @@ class Scene
 	AddGameObject(object)
 	{
 		this.gameObjects.push(object);
-		this.scene.add(object.mesh);
+		this.scene.push(object);
 	}
 }
