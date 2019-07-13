@@ -49,7 +49,6 @@ function Instantiate(gameObjet)
 
 function Destroy(gameObject)
 {
-	console.log(gameObject.tag);
 	if(gameObject === undefined) return;
 	if(gameObject.mesh === undefined) return;
 	gameObject.destroyed = true;

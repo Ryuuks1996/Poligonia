@@ -16,7 +16,11 @@ OBJLoader.load('Models3D/Meteoro.obj',
 	function ( error ) {console.log( 'An error happened' );}
 );
 	
-
+OBJLoader.load('Models3D/laser.obj',
+	function ( object ) {Models[4] = object;},
+	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
+	function ( error ) {console.log( 'An error happened' );}
+);
 /*
 function LoadObj(path,obj)
 {

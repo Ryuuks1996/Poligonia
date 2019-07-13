@@ -28,7 +28,7 @@ class MovementController extends Behavior
 			this.direction.x * (this.speed*time.DeltaTime()),
 			this.direction.y * (this.speed*time.DeltaTime()),
 			this.direction.z * (this.speed*time.DeltaTime())
-			);
+            );
         this.gameObject.Translate(dir);
     }
 }

@@ -9,6 +9,10 @@ class Player extends GameObject
         this.maxSpeed = maxSpeed;
 
 		this.speed = minSpeed;
+
+		this.projectile1 = Models[4].clone();
+		this.projectile1.position.set(x,y,z);
+
 		
 		//stats
 		this.velocity = velocity;
@@ -26,8 +30,10 @@ class Player extends GameObject
 	Update()
 	{
 		//var VecMouse = new THREE.Vector3(MouseX-(window.innerWidth/2),MouseY-(window.innerHeight/2),0);		
-		this.mesh.rotateY(-((MouseX-(window.innerWidth/2))/(window.innerWidth/2)) * 0.01);
+		this.mesh.rotateY(-((MouseX-(window.innerWidth/2))/(window.innerWidth/2)) * 0.01);		
+		this.projectile1.rotateY(-((MouseX-(window.innerWidth/2))/(window.innerWidth/2)) * 0.01);
 		this.mesh.rotateX(((MouseY-(window.innerHeight/2))/(window.innerHeight/2)) * 0.01);
+		this.projectile1.rotateX(((MouseY-(window.innerHeight/2))/(window.innerHeight/2)) * 0.01);
 		
 		this.direction = this.mesh.getWorldDirection(this.direction);
 		
@@ -37,16 +43,19 @@ class Player extends GameObject
 			this.direction.x * this.speed * time.DeltaTime(),
 			this.direction.y * this.speed * time.DeltaTime(),
 			this.direction.z * this.speed * time.DeltaTime());				
-		this.Translate(dir);		
+		this.Translate(dir);
+		this.mesh.position.set(this.mesh.position.x,this.mesh.position.y,this.mesh.position.z);	
 		
 	
 		if(inputManager.GetInput("Left"))
 		{
 			this.mesh.rotateY(0.01);
+			this.projectile1.rotateY(0.01);
 		}
 		else if(inputManager.GetInput("Right"))
 		{
 			this.mesh.rotateY(-0.01);
+			this.projectile1.rotateY(-0.01);
 		}
 		
 		if(inputManager.GetInput("Down"))
@@ -77,13 +86,15 @@ class Player extends GameObject
 		for(var i = 0 ; i < this.gunAmount; i++)
 		{
 			var pos = this.mesh.position.clone();
-			var projectile = new Projectile(pos.x,pos.y,pos.z,Models[0].clone(),GetMaterial("Material_Ship"),1,250,10);
-			var dir = new THREE.Vector3(
-				this.direction.x + projectile.mesh.position.x,
-				this.direction.y + projectile.mesh.position.y,
-				this.direction.z + projectile.mesh.position.z,
-				);
-			projectile.mesh.lookAt(dir);
+			var dir = this.direction.clone();
+			dir.add(pos);
+			var projectile = new Projectile(pos.x+this.direction.x,
+							pos.y+this.direction.y,
+							pos.z+this.direction.z,
+							this.projectile1.clone(),
+							GetMaterial("Material_Ship"),
+							1,150,10);
+			
 			Instantiate(projectile);
 		}
 		

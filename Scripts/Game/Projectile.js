@@ -8,8 +8,8 @@ class Projectile extends GameObject
 		this.lifeSpan = lifeSpan;
 		this.time = 0;
 
-		this.AddBehaviors(new MovementController(this,speed,0,speed));
-		this.AddBehaviors(new MovementController(this,1));
+		this.AddBehaviors(new MovementController(this,speed,0,this.speed));
+		this.AddBehaviors(new SphereCollider(this,5));
 	}
 	
 	Update()
@@ -26,7 +26,6 @@ class Projectile extends GameObject
 	{
 		if(collider.gameObject.tag == "Asteroid"  && (!collider.gameObject.destroyed))
         {
-			console.log("hit");
 			collider.gameObject.GetDamage(this.damage);
 		}
 		if(collider.gameObject.tag != "player"  && (!collider.gameObject.destroyed))
