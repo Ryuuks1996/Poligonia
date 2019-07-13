@@ -1,8 +1,8 @@
 class Player extends GameObject
 {
-	constructor( x, y, z, scene, obj3D, material,minSpeed,maxSpeed,velocity,acceleration,coldDown,gunAmount)
+	constructor( x, y, z, obj3D, material,minSpeed,maxSpeed,velocity,acceleration,coldDown,gunAmount)
 	{
-		super( x, y, z, scene, obj3D, material);
+		super( x, y, z, obj3D, material);
 		this.tag = "player";
 
 		this.minSpeed = minSpeed;
@@ -27,7 +27,7 @@ class Player extends GameObject
 	{
 		//var VecMouse = new THREE.Vector3(MouseX-(window.innerWidth/2),MouseY-(window.innerHeight/2),0);		
 		this.mesh.rotateY(-((MouseX-(window.innerWidth/2))/(window.innerWidth/2)) * 0.01);
-		this.mesh.rotateX(((MouseY-(window.innerHeight/2))/(window.innerHeight/2)) * 0.01);
+		this.mesh.rotateX(((MouseY-(window.innerHeight/2))/(window.innerHeight/2)) * 0.001);
 		
 		this.direction = this.mesh.getWorldDirection(this.direction);
 		
@@ -77,7 +77,7 @@ class Player extends GameObject
 		for(var i = 0 ; i < this.gunAmount; i++)
 		{
 			var pos = this.mesh.position.clone();
-			var projectile = new Projectile(pos.x,pos.y,pos.z,this.scene,Models[0].clone(),GetMaterial("Material_Ship"));
+			var projectile = new Projectile(pos.x,pos.y,pos.z,Models[0].clone(),GetMaterial("Material_Ship"));
 			var dir = new THREE.Vector3(
 				this.direction.x + projectile.mesh.position.x,
 				this.direction.y + projectile.mesh.position.y,
