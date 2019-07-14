@@ -11,7 +11,7 @@ class Scene
 		
 		this.sceneHUD = new THREE.Scene();
 		this.cameraHUD = new THREE.OrthographicCamera( window.innerWidth / - 2, window.innerWidth / 2, window.innerHeight / 2, window.innerHeight / - 2, 1, 50);
-		this.cameraHUD.position.z = -10;
+		this.cameraHUD.position.z = 10;
 		this.cameraHUD.lookAt(0,0,0);
 	}
 	
@@ -34,5 +34,10 @@ class Scene
 	{
 		this.gameObjects.push(object);
 		this.scene.add(object.mesh);
+	}
+
+	RemoveGameObject(object)
+	{
+		this.scene.remove(object.mesh);
 	}
 }

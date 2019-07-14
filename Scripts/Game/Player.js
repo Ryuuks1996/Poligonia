@@ -1,6 +1,6 @@
 class Player extends GameObject
 {
-	constructor( x, y, z, obj3D, material,minSpeed,maxSpeed,velocity,acceleration,coldDown,gunAmount)
+	constructor( x, y, z, obj3D, material,minSpeed,maxSpeed,acceleration,coldDown)
 	{
 		super( x, y, z, obj3D, material);
 		this.tag = "player";
@@ -15,10 +15,10 @@ class Player extends GameObject
 
 		
 		//stats
-		this.velocity = velocity;
+		this.velocity = 1;
         this.acceleration = acceleration;
 		this.coldDown = coldDown;
-		this.gunAmount = gunAmount;
+		this.gunAmount = 1;
 		
 		//this.bulletPrefab = new Bullet();
 		
@@ -44,8 +44,7 @@ class Player extends GameObject
 			this.direction.y * this.speed * time.DeltaTime(),
 			this.direction.z * this.speed * time.DeltaTime());				
 		this.Translate(dir);
-		this.mesh.position.set(this.mesh.position.x,this.mesh.position.y,this.mesh.position.z);	
-		
+		this.mesh.position.set(this.mesh.position.x,this.mesh.position.y,this.mesh.position.z);			
 	
 		if(inputManager.GetInput("Left"))
 		{
@@ -60,15 +59,22 @@ class Player extends GameObject
 		
 		if(inputManager.GetInput("Down"))
 		{
-			this.speed = Math.max(this.minSpeed,Math.min(this.speed - this.acceleration,this.maxSpeed));
+			
+			this.mesh.rotateX(0.01);
+			this.projectile1.rotateX(0.01);
+			//this.speed = Math.max(this.minSpeed,Math.min(this.speed - this.acceleration,this.maxSpeed));
 		}
 		else if(inputManager.GetInput("Up"))
 		{
-			this.speed = Math.max(this.minSpeed,Math.min(this.speed + this.acceleration,this.maxSpeed));			
+			
+			this.mesh.rotateX(-0.01);
+			this.projectile1.rotateX(-0.01);
+			//this.speed = Math.max(this.minSpeed,Math.min(this.speed + this.acceleration,this.maxSpeed));			
 		}
-		else
+
+		if(inputManager.GetInput("Trigger"))
 		{
-			this.speed = Math.max(this.minSpeed,Math.min(this.speed - (this.acceleration/5),this.maxSpeed));
+			this.speed = Math.max(this.minSpeed,Math.min(this.speed + (this.acceleration*this.time.GetDelta()),this.maxSpeed));
 		}
 		
 		if(this.time >= this.coldDown && inputManager.GetInput("Fire1"))
@@ -83,21 +89,17 @@ class Player extends GameObject
 	
 	Shoot()
 	{
-		for(var i = 0 ; i < this.gunAmount; i++)
-		{
-			var pos = this.mesh.position.clone();
-			var dir = this.direction.clone();
-			dir.add(pos);
-			var projectile = new Projectile(pos.x+this.direction.x,
-							pos.y+this.direction.y,
-							pos.z+this.direction.z,
-							this.projectile1.clone(),
-							GetMaterial("Material_Ship"),
-							1,150,10);
-			
-			Instantiate(projectile);
-		}
+		var pos = this.mesh.position.clone();
+		var dir = this.direction.clone();
+		dir.add(pos);
+		var projectile = new Projectile(pos.x+this.direction.x,
+						pos.y+this.direction.y,
+						pos.z+this.direction.z,
+						this.projectile1.clone(),
+						GetMaterial("Material_Laser"),
+						1,150,4);
 		
+		Instantiate(projectile);
 	}
 }
 

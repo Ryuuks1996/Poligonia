@@ -56,15 +56,15 @@ class WaveController
             }
             else if(r > this.thresholds[1])
             {
-                Instantiate(new Asteroid(x, y, z, undefined, undefined, this.target, 3));
+                Instantiate(new Asteroid(x, y, z, Models[3].clone(), undefined, this.target, 3));
             }
             else if(r > this.thresholds[0])
             {
-                Instantiate(new Asteroid(x, y, z, undefined, undefined, this.target, 2));
+                Instantiate(new Asteroid(x, y, z, Models[2].clone(), undefined, this.target, 2));
             }
             else
             {
-                Instantiate(new Asteroid(x, y, z, undefined, undefined, this.target, 1));
+                Instantiate(new Asteroid(x, y, z, Models[1].clone(), undefined, this.target, 1));
             }
         }
     }

@@ -37,7 +37,7 @@ function SetScene(id)
 			//this.scene = new Options();
 			break;
 		case 3:
-			//this.scene = new Instructions();
+			this.scene = new Instructions();
 			break;	
 	}
 }
@@ -60,9 +60,10 @@ function Destroy(gameObject)
 		{gameObject.mesh.geometry.dispose();}
 	if(gameObject.mesh.material !== undefined)
 		{gameObject.mesh.material.dispose();}
-	this.scene.scene.remove(gameObject.mesh);
+	this.scene.RemoveGameObject(gameObject);
 	gameObject.mesh = undefined;
 	delete(gameObject);
+	gameObject = undefined;
 }
 
 function FindGameObjects(tag)

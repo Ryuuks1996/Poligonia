@@ -36,12 +36,12 @@ class Asteroid extends GameObject
                 Instantiate(new Asteroid(pos.x + x, 
                                         pos.y + y, 
                                         pos.z + z, 
-                                        undefined, undefined, 
+                                        Models[this.size-1].clone(), undefined, 
                                         this.target, this.size-1));
                 Instantiate(new Asteroid(pos.x - x, 
                                         pos.y - y, 
                                         pos.z - z, 
-                                        undefined, undefined, 
+                                        Models[this.size-1].clone(), undefined, 
                                         this.target, this.size-1));
             }
 
