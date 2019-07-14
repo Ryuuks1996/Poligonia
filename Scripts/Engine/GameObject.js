@@ -2,7 +2,6 @@ class GameObject
 {
 	constructor( x, y, z, obj3D, material)
 	{
-		this.scene = scene;
 		if(material === undefined)
 		{ 
 			material = new THREE.MeshNormalMaterial();

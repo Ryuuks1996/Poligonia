@@ -6,7 +6,7 @@ class MainMenu extends Scene
 		
 		this.Background = new CanvasObject(0,0,this.sceneHUD,GetMaterial("Background"),window.innerWidth,window.innerHeight);
 		
-		this.logo = new CanvasObject(0,200,this.sceneHUD,GetMaterial("Material_Ship"),400,400);
+		this.logo = new CanvasObject(0,200,this.sceneHUD,GetMaterial("Logo"),400,400);
 		 
 		this.textStart = new CanvasObject(0,-70,this.sceneHUD,GetMaterial("Material_Ship"),160,40);
 		this.textOptions = new CanvasObject(0,-140,this.sceneHUD,GetMaterial("Material_Ship"),160,40);
