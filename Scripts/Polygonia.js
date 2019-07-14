@@ -37,7 +37,7 @@ function SetScene(id)
 			//this.scene = new Options();
 			break;
 		case 3:
-			//this.scene = new Instructions();
+			this.scene = new Instructions();
 			break;	
 	}
 }
