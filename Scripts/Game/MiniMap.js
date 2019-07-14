@@ -16,12 +16,19 @@ class MiniMap
 	{		
 		//remove undefined
 		for(var i = 0 ; i < this.targets[0].length; i++)
-		{
-			if(this.targets[0][i] == undefined)
+		{/*
+			if(this.targets[0][i] === undefined || this.targets[0][i].destroyed == true)
 			{
+				var a = this.targets[1][i];
+				var b = this.targets[0][i];
+				console.log(this.targets[0][i].destroyed + " " + this.targets[1][i]);
+				this.scene.remove(a);
+				this.scene.remove(b);
+				this.targets[0].splice(i,1);
+				this.targets[1].splice(i,1);
 				//remove to targets [0] and [1]
 				//destroy
-			}
+			}*/
 		}
 		
 		// Pos
@@ -52,6 +59,21 @@ class MiniMap
 		this.targets[0].push(target);
 		var icon = new CanvasObject(0,0,this.scene,GetMaterial(tag),size,size);
 		this.targets[1].push(icon);
+	}
+
+	RemoveTarget(target)
+	{
+		if(!this.targets[0].includes(target)) return;
+		for(var i = 0 ; i < this.targets[0].length; i++)
+		{
+			if(this.targets[0][i] == target)
+			{
+				console.log(this.targets[0][i].destroyed + " " + this.targets[1][i]);
+				this.scene.remove(this.targets[1][i].mesh);
+				this.targets[0].splice(i,1);
+				this.targets[1].splice(i,1);
+			}
+		}
 	}
 	
 }
