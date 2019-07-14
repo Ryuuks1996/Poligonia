@@ -36,7 +36,7 @@ OBJLoader.load('Models3D/laser.obj',
 	function ( error ) {console.log( 'An error happened' );}
 );
 
-OBJLoader.load('Models3D/ciudad.obj',
+OBJLoader.load('Models3D/Bomb.obj',
 	function ( object ) {Models[5] = object;},
 	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
 	function ( error ) {console.log( 'An error happened' );}
