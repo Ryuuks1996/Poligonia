@@ -64,8 +64,11 @@ CreateMaterial('Assets2D/Ship.jpg',"Icon_PowerUp_Yellow");
 //Miselaneous
 CreateMaterial('Assets2D/Ship.jpg',"Icon_PlayerLife");
 
+//////////// MENU ////////////
 
-
+//Background
+//CreateMaterial('Assets2D/HUD/Logo.png',"Logo");
+CreateMaterial('Assets2D/HUD/Fondo.png',"Background");
 
 
 
