@@ -21,7 +21,7 @@ class GameScene extends Scene
 		
 		//this.core = new Core(100, undefined, undefined);
 		//this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.5,1);
-		this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.25,1);
+		this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,0.2);
 		this.core = new Core(100, undefined, undefined);
 		this.AddGameObject(this.player);
 		this.AddGameObject(this.core);
@@ -50,6 +50,7 @@ class GameScene extends Scene
 		playerPos.x + playerDir.x * -30 + playerUp.x * 10,
 		playerPos.y + playerDir.y * -30 + playerUp.y * 10,
 		playerPos.z + playerDir.z * -30 + playerUp.z * 10);
+
 		
 		this.camera.lookAt(playerPos);
 		collisionManager.Update();
@@ -63,6 +64,19 @@ class GameScene extends Scene
 	AddMiniMap(object,materialTag,size)
 	{
 		this.miniMap.AddTarget(object,materialTag,size);
+	}
+
+	AddGameObject(gameObject)
+	{
+		super.AddGameObject(gameObject);
+		if(gameObject.tag == "Asteroid")
+			{this.AddMiniMap(gameObject,"Material_Ship",gameObject.size*5);}
+	}
+
+	RemoveGameObject(object)
+	{
+		super.RemoveGameObject(object);
+		this.miniMap.RemoveTarget(object);
 	}
 }
 

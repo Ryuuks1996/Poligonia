@@ -28,9 +28,10 @@ class Projectile extends GameObject
         {
 			collider.gameObject.GetDamage(this.damage);
 		}
-		if(collider.gameObject.tag != "player"  && (!collider.gameObject.destroyed))
+		/*if(collider.gameObject.tag != "player"  && (!collider.gameObject.destroyed))
 		{
 			Destroy(this);
-		}
+		}*/
+		Destroy(this);
 	}
 }

@@ -35,4 +35,9 @@ class Scene
 		this.gameObjects.push(object);
 		this.scene.add(object.mesh);
 	}
+
+	RemoveGameObject(object)
+	{
+		this.scene.remove(object.mesh);
+	}
 }
