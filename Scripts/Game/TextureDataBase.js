@@ -29,17 +29,22 @@ function GetMaterial(tag)
 //Ship
 CreateMaterial('Assets2D/Ship.jpg',"Material_Ship");
 CreateMaterial('Assets2D/miniMap_Background.png',"Background_MiniMap");
+CreateMaterial('Assets2D/laser.jpg',"Material_Laser");
 
 //Enemy
 CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Small");
 CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Medium");
 CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Large");
+CreateMaterial('Assets2D/Bomb_Off.jpg',"Material_Bomb_Off");
+CreateMaterial('Assets2D/Bomb_On.jpg',"Material_Bomb_On");
 
 //PowerUp
-CreateMaterial('Assets2D/Ship.jpg',"Material_PowerUp_Red");
-CreateMaterial('Assets2D/Ship.jpg',"Material_PowerUp_Blue");
-CreateMaterial('Assets2D/Ship.jpg',"Material_PowerUp_Green");
-CreateMaterial('Assets2D/Ship.jpg',"Material_PowerUp_Yellow");
+CreateMaterial('Assets2D/PowerUp_Red.jpg',"Material_PowerUp_Red");
+CreateMaterial('Assets2D/PowerUp_Blue.jpg',"Material_PowerUp_Blue");
+CreateMaterial('Assets2D/PowerUp_Green.jpg',"Material_PowerUp_Green");
+CreateMaterial('Assets2D/PowerUp_Yellow.jpg',"Material_PowerUp_Yellow");
+CreateMaterial('Assets2D/PowerUp_Orange.jpg',"Material_PowerUp_Orange");
+CreateMaterial('Assets2D/PowerUp_Purple.jpg',"Material_PowerUp_Purple");
 
 
 //////////// HUD ////////////

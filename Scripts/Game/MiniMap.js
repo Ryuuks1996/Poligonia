@@ -68,7 +68,6 @@ class MiniMap
 		{
 			if(this.targets[0][i] == target)
 			{
-				console.log(this.targets[0][i].destroyed + " " + this.targets[1][i]);
 				this.scene.remove(this.targets[1][i].mesh);
 				this.targets[0].splice(i,1);
 				this.targets[1].splice(i,1);

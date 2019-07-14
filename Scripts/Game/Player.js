@@ -44,8 +44,7 @@ class Player extends GameObject
 			this.direction.y * this.speed * time.DeltaTime(),
 			this.direction.z * this.speed * time.DeltaTime());				
 		this.Translate(dir);
-		this.mesh.position.set(this.mesh.position.x,this.mesh.position.y,this.mesh.position.z);	
-		
+		this.mesh.position.set(this.mesh.position.x,this.mesh.position.y,this.mesh.position.z);			
 	
 		if(inputManager.GetInput("Left"))
 		{
@@ -97,7 +96,7 @@ class Player extends GameObject
 						pos.y+this.direction.y,
 						pos.z+this.direction.z,
 						this.projectile1.clone(),
-						GetMaterial("Material_Ship"),
+						GetMaterial("Material_Laser"),
 						1,150,4);
 		
 		Instantiate(projectile);
