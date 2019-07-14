@@ -38,7 +38,13 @@ function SetScene(id)
 			break;
 		case 3:
 			this.scene = new Instructions();
-			break;	
+			break;
+		case 4:
+			this.scene = new LoadingScene(3);
+			break;
+		default:
+			this.scene = new MainMenu();
+			break;
 	}
 }
 
@@ -120,12 +126,7 @@ function Init()
 	this.controller = new Controller();
 	
 	//GAME
-	SetScene(0);	
-	//this.gameScene = new GameScene();
-	//this.mainMenu = new MainMenu();
-	//this.options = new Options();
-	//this.instructions = new Instructions();
-
+	SetScene(0);
 }
 
 function Loop()
