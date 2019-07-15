@@ -54,6 +54,8 @@ CreateMaterial('Assets2D/Textures/PowerUp_Purple.jpg',"Material_PowerUp_Purple")
 
 //Titulos
 CreateMaterial('Assets2D/Hud/Logo.png',"Logo");
+CreateMaterial('Assets2D/Hud/Titulo Instrucciones.png',"Instrucciones");
+CreateMaterial('Assets2D/Hud/Titulo Opciones.png',"Opciones");
 
 //Barra sonido
 for(var i = 0; i < 5; i++)
@@ -62,7 +64,7 @@ for(var i = 0; i < 5; i++)
 }
 
 //Barra dificultad
-for(var i = 0; i < 5; i++)
+for(var i = 0; i < 3; i++)
 {
 	CreateMaterial('Assets2D/Hud/Dificultad '+(i+1)+'.png',"Barra_Dificultad_"+i);
 }
@@ -70,9 +72,18 @@ for(var i = 0; i < 5; i++)
 //Botones
 CreateMaterial('Assets2D/Hud/Empezar.png',"Boton_Empezar");
 CreateMaterial('Assets2D/Hud/Opciones.png',"Boton_Opciones");
-CreateMaterial('Assets2D/Hud/Salir.png',"Boton_Instrucciones");
-CreateMaterial('Assets2D/Hud/Empezar.png',"Boton_Empezar");
+CreateMaterial('Assets2D/Hud/Instrucciones.png',"Boton_Instrucciones");
+CreateMaterial('Assets2D/Hud/Salir.png',"Boton_Salir");
 CreateMaterial('Assets2D/Hud/Atras.png',"Boton_Atras");
+CreateMaterial('Assets2D/Hud/Selector.png',"Selector");
+CreateMaterial('Assets2D/Hud/Flecha 1.png',"Derecha");
+CreateMaterial('Assets2D/Hud/Flecha 2.png',"Izquierda");
+CreateMaterial('Assets2D/Hud/Flecha 1.png',"Derecha_Selector");
+CreateMaterial('Assets2D/Hud/Flecha 2.png',"Izquierda_Selector");
+
+//Menu
+CreateMaterial('Assets2D/Hud/Lineas menu.png',"Lineas_Menu");
+CreateMaterial('Assets2D/Hud/Lineas salida.png',"Lineas_Salir");
 
 //Minimapa
 CreateMaterial('Assets2D/Hud/player.png',"Icon_MiniMap_Player");
@@ -84,7 +95,7 @@ CreateMaterial('Assets2D/Hud/bomba.png',"Icon_MiniMap_Mine");
 CreateMaterial('Assets2D/Hud/Creditos.png',"panel_Creditos");
 CreateMaterial('Assets2D/Hud/Instrucciones Juego.png',"panel_Instrucciones_Juego");
 CreateMaterial('Assets2D/Hud/Instrucciones movimientos.png',"panel_Instrucciones_Movimientos");
-CreateMaterial('Assets2D/Hud/Instrucciones movimientos2.png',"panel_Instrucciones_Movimientos2");
+CreateMaterial('Assets2D/Hud/Instrucciones movimientos 2.png',"panel_Instrucciones_Movimientos_2");
 
 //Miselaneous
 CreateMaterial('Assets2D/Hud/Vida.png',"Icon_PlayerLife");

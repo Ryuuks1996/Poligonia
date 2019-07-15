@@ -4,11 +4,15 @@ class Instructions extends Scene
 	{
 		super();
 		this.background = new CanvasObject(0,0,this.sceneHUD,GetMaterial("Background"),window.innerWidth,window.innerHeight);
-		this.textExit = new CanvasObject(0,-280,this.sceneHUD,GetMaterial("Material_Ship"),160,40);
 		
-		this.selector = new SelectorMenu(0,-70,this.sceneHUD,GetMaterial("Material_Ship"),240,40);
-		this.selector.AddPosition(this.textExit.mesh.position);
-		this.gameObjects.push(this.selector);
+		this.title = new CanvasObject(0,(window.innerHeight/2) - 80,this.sceneHUD,GetMaterial("Instrucciones"),250,75);
+		
+		this.panelL = new CanvasObject(-600,0,this.sceneHUD,GetMaterial("panel_Instrucciones_Juego"),500,700);
+		this.panelC = new CanvasObject(0,0,this.sceneHUD,GetMaterial("panel_Instrucciones_Movimientos"),500,700);
+		this.panelR = new CanvasObject(600,0,this.sceneHUD,GetMaterial("panel_Instrucciones_Movimientos_2"),500,700);
+		
+		this.textExit = new CanvasObject(0,-(window.innerHeight/2) + 70,this.sceneHUD,GetMaterial("Boton_Atras"),175,50);
+		
 	}
 	
 	Update()
@@ -17,17 +21,7 @@ class Instructions extends Scene
 		
 		if(inputManager.GetInputDown("Enter") || inputManager.GetInputDown("Trigger"))
 		{
-			switch(this.selector.idPos)
-			{
-				case 0:
-					SetScene(1);
-					break;
-
-				default:
-					SetScene(1);
-					break;					
-			}
-			
+			SetScene(0);			
 		}
 		
 	}

@@ -34,7 +34,8 @@ function SetScene(id)
 			this.scene = new GameScene();
 			break;	
 		case 2:
-			//this.scene = new Options();
+			this.scene = new OptionsScene();
+			console.log("aaaaa");
 			break;
 		case 3:
 			this.scene = new Instructions();
