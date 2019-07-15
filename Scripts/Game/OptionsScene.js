@@ -1,5 +1,5 @@
 
-var volumen = 0;
+var volumen = 3;
 var dificult = 1;
 
 class OptionsScene extends Scene
@@ -15,7 +15,7 @@ class OptionsScene extends Scene
 		// barra sonido
 		this.titleSound = new CanvasObject(-300,240,this.sceneHUD,GetMaterial("Sonido"),250,75);
 		var listMat = [];
-		for(var i = 0; i < 5;i++)
+		for(var i = 0; i < 6;i++)
 		{
 			listMat.push(GetMaterial("Barra_Sonido_"+i));
 		}		

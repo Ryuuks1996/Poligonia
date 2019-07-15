@@ -60,9 +60,9 @@ CreateMaterial('Assets2D/Hud/Sonido.png',"Sonido");
 CreateMaterial('Assets2D/Hud/Dificultad.png',"Dificultad");
 
 //Barra sonido
-for(var i = 0; i < 5; i++)
+for(var i = 0; i < 6; i++)
 {
-	CreateMaterial('Assets2D/Hud/Sonido '+(i+1)+'.png',"Barra_Sonido_"+i);
+	CreateMaterial('Assets2D/Hud/Sonido '+i+'.png',"Barra_Sonido_"+i);
 }
 
 //Barra dificultad

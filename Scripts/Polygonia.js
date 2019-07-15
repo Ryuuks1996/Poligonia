@@ -113,6 +113,7 @@ function Init()
 	this.renderer.setSize(WIDTH, HEIGHT);
 	this.renderer.shadowMap.enabled = true;
 	this.renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+	this.renderer.sortObjects = true;
 	document.body.appendChild(this.renderer.domElement);
 	
 	//RESIZE RENDERER BY BROWSER WINDOW
