@@ -56,6 +56,8 @@ CreateMaterial('Assets2D/Textures/PowerUp_Purple.jpg',"Material_PowerUp_Purple")
 CreateMaterial('Assets2D/Hud/Logo.png',"Logo");
 CreateMaterial('Assets2D/Hud/Titulo Instrucciones.png',"Instrucciones");
 CreateMaterial('Assets2D/Hud/Titulo Opciones.png',"Opciones");
+CreateMaterial('Assets2D/Hud/Sonido.png',"Sonido");
+CreateMaterial('Assets2D/Hud/Dificultad.png',"Dificultad");
 
 //Barra sonido
 for(var i = 0; i < 5; i++)
