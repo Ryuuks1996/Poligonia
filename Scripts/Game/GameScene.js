@@ -45,9 +45,9 @@ class GameScene extends Scene
 
 		
 		this.camera.position.set(
-		playerPos.x + playerDir.x * -30 + playerUp.x * 10,
-		playerPos.y + playerDir.y * -30 + playerUp.y * 10,
-		playerPos.z + playerDir.z * -30 + playerUp.z * 10);
+		playerPos.x + playerDir.x * -40,
+		playerPos.y + playerDir.y * -40,
+		playerPos.z + playerDir.z * -40);
 
 		
 		this.camera.lookAt(playerPos);
