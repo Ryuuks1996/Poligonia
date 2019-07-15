@@ -1,31 +1,27 @@
 class Explocion extends GameObject
 {
-	constructor(x, y, z, obj3D, material, initialSize, finalSize)
+	constructor(x, y, z, obj3D, material, initialRadius, finalRadius)
 	{
 		super(x, y, z, obj3D, material);
 		
-		this.initialSize = initialSize;
-		this.finalSize = finalSize;
+		this.initialRadius = initialRadius;
+		this.finalRadius = finalRadius;
 
-		this.time = new Time();
+		this.startTime = time.ElapsedTime();
+		this.duration = 1;
 	}
 
 	Update()
 	{
 		super.Update();
+		
+		var time = time.ElapsedTime() - this.startTime;		
+		var value = THREE.Math.lerp(this.initialRadius, this.finalRadius, time/this.duration);
+		this.mesh.scale.set(value,value,value);
 
-		var value = THREE.Math.lerp(this.initialSize, this.finalSize, this.time.actualTime)
-		if(this.finalSize != value)
+		if(time >= this.duration)
 		{
-			this.gameObject.mesh.scale.set(value,value,value);
-		}
-		else
-		{
-			for(var child in this.gameObject.mesh.children)
-			{
-				this.gameObject.mesh.children[child].material.transparent = true;
-			}
-			this.gameObject.destroyed = true;
+			Destroy(this);
 		}
 	}
 }

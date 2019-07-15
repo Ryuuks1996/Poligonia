@@ -33,5 +33,8 @@ function StopAudio()
 
 function SetVolumen(v)
 {
-	sound.setVolume(v/6.0);
+	music.setVolume(v/6.0);
+	explocion.setVolume(v/6.0);
+	shoot.setVolume(v/6.0);
+	powerUp.setVolume(v/6.0);
 }

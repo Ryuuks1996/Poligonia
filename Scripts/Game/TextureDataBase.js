@@ -33,12 +33,18 @@ CreateMaterial('Assets2D/Hud/Fondo.png',"Background");
 CreateMaterial('Assets2D/Ship.jpg',"Material_Ship");
 CreateMaterial('Assets2D/Textures/laser.jpg',"Material_Laser");
 
-//Enemy
+//Asteroids
 CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Small");
 CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Medium");
 CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Large");
+
+//Bomb
 CreateMaterial('Assets2D/Textures/Bomb_Off.jpg',"Material_Bomb_Off");
 CreateMaterial('Assets2D/Textures/Bomb_On.jpg',"Material_Bomb_On");
+
+//explo
+CreateMaterial('Assets2D/Textures/plasma.png',"plasma");
+CreateMaterial('Assets2D/Textures/fire.png',"Explocion");
 
 //PowerUp
 CreateMaterial('Assets2D/Textures/PowerUp_Red.jpg',"Material_PowerUp_Red");
