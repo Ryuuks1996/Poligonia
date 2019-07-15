@@ -125,6 +125,12 @@ class Player extends GameObject
 		}
 
 		if(!this.onNitro){this.nitro += (10*time.DeltaTime())}
+
+		//immunity
+		if(this.immunity > 0)
+		{
+			this.immunity -= time.DeltaTime();
+		}
 		
 	}
 	
@@ -141,6 +147,12 @@ class Player extends GameObject
 						1,150,4);
 		
 		Instantiate(projectile);
+	}
+
+	GetDamage(damage)
+	{
+		if(this.immunity <= 0)
+		{this.lifes -= damage;}
 	}
 }
 

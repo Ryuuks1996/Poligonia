@@ -17,8 +17,8 @@ class GameScene extends Scene
 		this.camera.position.z = -20;
 		this.light = new THREE.AmbientLight(0xffffff); this.scene.add(this.light);
 
-		this.player = new Player(0, -10, 0, Models[4].clone(), GetMaterial("Material_Ship"),5,15,2,0.2);
-		this.core = new Core(100, Models[5].clone(), undefined);
+		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),5,15,2,0.2);
+		this.core = new Core(100, Models[4].clone(), undefined);
 		this.AddGameObject(this.player);
 		this.AddGameObject(this.core);
 

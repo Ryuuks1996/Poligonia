@@ -8,7 +8,7 @@ class Asteroid extends GameObject
         this.tag = "Asteroid";
         this.life = size*size;
         this.size = size;
-        this.speed = (20/(this.size));
+        this.speed = (10/(this.size));
 
         this.AddBehaviors(new MovementController(this, this.speed, 0, this.speed));
         this.AddBehaviors(new SphereCollider(this,2*this.size));
@@ -30,9 +30,9 @@ class Asteroid extends GameObject
                 var pos = new THREE.Vector3(this.mesh.position.x,
                                             this.mesh.position.y,
                                             this.mesh.position.z);
-                var x = ((Math.random()*2 - 1) * 15);
-                var y = ((Math.random()*2 - 1) * 15);
-                var z = ((Math.random()*2 - 1) * 15);
+                var x = ((Math.random()*2 - 1) * 5);
+                var y = ((Math.random()*2 - 1) * 5);
+                var z = ((Math.random()*2 - 1) * 5);
                 Instantiate(new Asteroid(pos.x + x, 
                                         pos.y + y, 
                                         pos.z + z, 
