@@ -4,6 +4,7 @@ var HEIGHT = window.innerHeight;
 var inputManager = new InputManager();
 var CubeTextureLoader = new THREE.CubeTextureLoader();
 var AudioLoader = new THREE.AudioLoader();
+
 /*
 function Destroy(scene,mesh)
 {
