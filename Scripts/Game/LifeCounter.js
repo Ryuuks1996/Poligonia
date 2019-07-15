@@ -1,11 +1,11 @@
 class LifeCounter
 {
-	constructor(player,scene)
+	constructor(scene,material,size,x,y,delta,n)
 	{
 		this.Lifes = [];
-		for(var i = 0; i< 3; i++)
+		for(var i = 0; i< n; i++)
 		{
-			this.Lifes.push(new CanvasObject(-(window.innerWidth/2)+50 + i*80,(window.innerHeight/2)-50,scene,GetMaterial("Icon_PlayerLife"),60,60));
+			this.Lifes.push(new CanvasObject(x + i*delta,y,scene,material,size,size));
 		}
 	}
 	

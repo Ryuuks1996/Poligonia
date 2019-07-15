@@ -7,7 +7,7 @@ class MiniMap
 	
 		this.targets = []; this.targets[0] = []; this.targets[1] = [];
 		this.factorScale = 1;
-		this.offsetCenter = new THREE.Vector3(-(window.innerWidth/2)+150,-(window.innerHeight/2)+150,0);
+		this.offsetCenter = new THREE.Vector3((window.innerWidth/2)-200,-(window.innerHeight/2)+150,0);
 		
 		this.MiniMapBackground = new CanvasObject(this.offsetCenter.x,this.offsetCenter.y,this.scene,GetMaterial("Background_MiniMap"),240,240);
 	}

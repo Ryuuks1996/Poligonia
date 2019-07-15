@@ -1,11 +1,11 @@
 class BarLife
 {
-	constructor()
+	constructor(scene,tag,n,x,y,w,h)
 	{
 		this.textures = [];
-		for(var i = 0; i < 11; i++)
+		for(var i = 0; i < n; i++)
 		{
-			this.textures.push(GetMaterial("Vida_Core_"+i));
+			this.textures.push(GetMaterial(tag+i));
 		}
 		
 		this.barra = new CanvasObject(x,y,scene,this.textures[0],w,h);

@@ -22,7 +22,11 @@ class GameScene extends Scene
 		this.AddGameObject(this.player);
 		this.AddGameObject(this.core);
 
+		this.lifeCounter = new LifeCounter(this.sceneHUD,GetMaterial("Icon_PlayerLife"),60,-(window.innerWidth/2)+50,-(window.innerHeight/2)+150,80,3);
+		this.especialAttackCounter = new LifeCounter(this.sceneHUD,GetMaterial("Icon_Potenciador"),30,-(window.innerWidth/2)+30,-(window.innerHeight/2)+220,40,6);
 		
+		this.nitro = new BarLife(this.sceneHUD,"Barra_Nitro_",6,-(window.innerWidth/2)+160,-(window.innerHeight/2)+50,300,75);
+		this.barLife = new BarLife(this.sceneHUD,"Vida_Core_",11,0,(window.innerHeight/2) -80,600,100);
 		this.altimetro = new Altimetro(this.sceneHUD,this.player);
 		this.miniMap = new MiniMap(this.sceneHUD,100);
 		this.AddMiniMap(this.player,"Icon_MiniMap_Player",30);
@@ -78,7 +82,7 @@ class GameScene extends Scene
 		else if(gameObject.tag == "Core")
 		{
 			// saca null no se porque
-			this.AddMiniMap(gameObject,"Icon_MiniMap_Core",40);
+			//this.AddMiniMap(gameObject,"Icon_MiniMap_Core",40);
 		}
 	}
 
