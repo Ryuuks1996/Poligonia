@@ -40,7 +40,10 @@ function SetScene(id)
 			this.scene = new MainMenu();
 			break;
 	}
-	this.scene.scene.add(sound);
+	this.scene.scene.add(music);
+	this.scene.scene.add(shoot);
+	this.scene.scene.add(explocion);
+	this.scene.scene.add(powerUp);
 }
 
 function Instantiate(gameObjet)
@@ -124,7 +127,7 @@ function Init()
 	//GAME
 	SetScene(0);
 	console.log("play audio");
-	PlayAudio('Music/001_Music.mp3',true);
+	PlayAudio('Music/001_Music.mp3',true,music);
 }
 
 function Loop()

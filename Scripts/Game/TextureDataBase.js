@@ -69,6 +69,18 @@ for(var i = 0; i < 3; i++)
 	CreateMaterial('Assets2D/Hud/Dificultad '+(i+1)+'.png',"Barra_Dificultad_"+i);
 }
 
+//Barra vida core
+for(var i = 0; i < 11; i++)
+{
+	CreateMaterial('Assets2D/Hud/CoreLife'+(i)+'.png',"Vida_Core_"+i);
+}
+
+//Barra nitro
+for(var i = 0; i < 6; i++)
+{
+	CreateMaterial('Assets2D/Hud/BarraNitro'+(i)+'.png',"Barra_Nitro_"+i);
+}
+
 //Botones
 CreateMaterial('Assets2D/Hud/Empezar.png',"Boton_Empezar");
 CreateMaterial('Assets2D/Hud/Opciones.png',"Boton_Opciones");
@@ -104,7 +116,7 @@ CreateMaterial('Assets2D/Hud/Instrucciones movimientos 2.png',"panel_Instruccion
 
 //Miselaneous
 CreateMaterial('Assets2D/Hud/Vida.png',"Icon_PlayerLife");
-
+CreateMaterial('Assets2D/Hud/Potenciador.png',"Icon_Potenciador");
 
 
 

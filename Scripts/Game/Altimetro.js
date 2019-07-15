@@ -6,7 +6,7 @@ class Altimetro
 		this.target = target;
 		
 		this.factorScale = 1;
-		this.offsetCenter = new THREE.Vector3(-(window.innerWidth/2)+300,-(window.innerHeight/2)+150,0);
+		this.offsetCenter = new THREE.Vector3((window.innerWidth/2)-50,-(window.innerHeight/2)+150,0);
 		this.MiniMapBackground = new CanvasObject(this.offsetCenter.x,this.offsetCenter.y,this.scene,GetMaterial("Background_Altimetro"),20,200);
 		this.icon = new CanvasObject(this.offsetCenter.x,this.offsetCenter.y,this.scene,GetMaterial("Puntero_Altimetro"),20,20);
 		

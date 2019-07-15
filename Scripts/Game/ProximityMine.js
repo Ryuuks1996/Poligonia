@@ -1,7 +1,7 @@
 class ProximityMine extends GameObject
 {
 	constructor(x, y, z, obj3D, material, radiusFollow, radiusIgnite,speed)
-	
+	{
 		super(x, y, z, obj3D, material);
 		
 		this.speed = speed;
@@ -41,8 +41,10 @@ class ProximityMine extends GameObject
 		
 	}
 	
-	Explocion()
+	Explocion(initialSize, finalSize)
 	{
-		//Instantitate();
+		var explosion = new Explocion(this.gameObject.mesh.position.x,
+			this.gameObject.mesh.position.y, this.gameObject.mesh.position.z,
+			this.gameObject.mesh, this.gameObject.mesh.material, initialSize, finalSize);
 	}
 }

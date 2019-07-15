@@ -15,7 +15,6 @@ class Bar
 	{
 		if(v >= 0 && v < this.textures.length)
 		{
-			console.log(this.textures[v]);
 			this.value = v;
 			this.barra.mesh.material.map = this.textures[v].map;
 		}
