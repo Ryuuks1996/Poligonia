@@ -1,10 +1,14 @@
 var AudioLoader = new THREE.AudioLoader();
 var playing = false;
 var	audioListener = new THREE.AudioListener();
-var	sound = new THREE.Audio( audioListener );
+
+var	music = new THREE.Audio( audioListener );
+var	explocion = new THREE.Audio( audioListener );
+var	shoot = new THREE.Audio( audioListener );
+var	powerUp = new THREE.Audio( audioListener );
 
 
-function PlayAudio(ruta,loop)
+function PlayAudio(ruta,loop,sound)
 {
 	if(!playing)
 	{	

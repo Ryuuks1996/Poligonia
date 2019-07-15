@@ -69,6 +69,12 @@ for(var i = 0; i < 3; i++)
 	CreateMaterial('Assets2D/Hud/Dificultad '+(i+1)+'.png',"Barra_Dificultad_"+i);
 }
 
+//Barra vida core
+for(var i = 0; i < 11; i++)
+{
+	CreateMaterial('Assets2D/Hud/CoreLife'+(i)+'.png',"Vida_Core_"+i);
+}
+
 //Botones
 CreateMaterial('Assets2D/Hud/Empezar.png',"Boton_Empezar");
 CreateMaterial('Assets2D/Hud/Opciones.png',"Boton_Opciones");
