@@ -7,9 +7,9 @@ class MiniMap
 	
 		this.targets = []; this.targets[0] = []; this.targets[1] = [];
 		this.factorScale = 1;
-		this.offsetCenter = new THREE.Vector3(-(window.innerWidth/2)+100,-(window.innerHeight/2)+100,0);
+		this.offsetCenter = new THREE.Vector3(-(window.innerWidth/2)+150,-(window.innerHeight/2)+150,0);
 		
-		this.MiniMapBackground = new CanvasObject(this.offsetCenter.x,this.offsetCenter.y,this.scene,GetMaterial("Background_MiniMap"),200,200);
+		this.MiniMapBackground = new CanvasObject(this.offsetCenter.x,this.offsetCenter.y,this.scene,GetMaterial("Background_MiniMap"),240,240);
 	}
 	
 	Update()
@@ -36,7 +36,7 @@ class MiniMap
 		{	
 			var pos = this.targets[0][i].mesh.position.clone();
 			
-			if(this.targets[0][i].mesh.position.length() <= this.radius)
+			if(this.targets[0][i].mesh.position.length() <= this.radius) // esto deberia preguntar solo por (x,z)
 			{
 				this.targets[1][i].SetPosition(
 					this.offsetCenter.x + (pos.x * this.factorScale),

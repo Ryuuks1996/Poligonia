@@ -16,20 +16,16 @@ class GameScene extends Scene
 		
 		this.camera.position.z = -20;
 		this.light = new THREE.AmbientLight(0xffffff); this.scene.add(this.light);
-		//this.light = new THREE.AmbientLight( 0x404040 ); // soft white light
-		//this.scene.add( this.light );
-		
-		//this.core = new Core(100, undefined, undefined);
-		//this.player = new Player(0, -10, 0, Models[0], GetMaterial("Material_Ship"),10,20,1,1,0.5,1);
+
 		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),10,20,1,0.2);
 		this.core = new Core(100, Models[5].clone(), undefined);
 		this.AddGameObject(this.player);
 		this.AddGameObject(this.core);
-		//console.log(this.player.mesh.up);
+
 		
+		this.altimetro = new Altimetro(this.sceneHUD,this.player);
 		this.miniMap = new MiniMap(this.sceneHUD,100);
-		this.AddMiniMap(this.player,"Material_Ship",20);
-		//this.miniMap.AddTarget(this.player,"Material_Ship",20);
+		this.AddMiniMap(this.player,"Icon_MiniMap_Player",30);
 		
 		this.waveController = new WaveController(new THREE.Vector3(0,0,0),5,1.1,[0.2,0.6,0.8],500,10);
 		
@@ -40,6 +36,7 @@ class GameScene extends Scene
 		super.Update();
 		
 		this.miniMap.Update();
+		this.altimetro.Update();
 		this.waveController.Update();
 		var playerDir = new THREE.Vector3(0,0,0);
 		this.player.mesh.getWorldDirection(playerDir);
@@ -71,7 +68,18 @@ class GameScene extends Scene
 	{
 		super.AddGameObject(gameObject);
 		if(gameObject.tag == "Asteroid")
-			{this.AddMiniMap(gameObject,"Material_Ship",gameObject.size*5);}
+		{
+			this.AddMiniMap(gameObject,"Icon_MiniMap_Asteroid",20);
+		}
+		else if(gameObject.tag == "Mine")
+		{
+			this.AddMiniMap(gameObject,"Icon_MiniMap_Mine",20);
+		}
+		else if(gameObject.tag == "Core")
+		{
+			// saca null no se porque
+			//this.AddMiniMap(gameObject,"Icon_MiniMap_Core",gameObject.size*5);
+		}
 	}
 
 	RemoveGameObject(object)
