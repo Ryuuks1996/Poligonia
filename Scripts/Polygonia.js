@@ -3,7 +3,9 @@ var HEIGHT = window.innerHeight;
 
 var inputManager = new InputManager();
 var CubeTextureLoader = new THREE.CubeTextureLoader();
-var AudioLoader = new THREE.AudioLoader();
+
+
+
 
 /*
 function Destroy(scene,mesh)
@@ -13,15 +15,6 @@ function Destroy(scene,mesh)
 	mesh.dispose();
 	delete(mesh);
 }*/
-
-function PlayAudio(path,loop)
-{
-	if(!loop)
-	{
-		AudioLisener.load();
-	}
-}
-
 
 
 function SetScene(id)
@@ -47,6 +40,7 @@ function SetScene(id)
 			this.scene = new MainMenu();
 			break;
 	}
+	this.scene.scene.add(sound);
 }
 
 function Instantiate(gameObjet)
@@ -129,6 +123,8 @@ function Init()
 	
 	//GAME
 	SetScene(0);
+	console.log("play audio");
+	PlayAudio('Music/001_Music.mp3',true);
 }
 
 function Loop()
