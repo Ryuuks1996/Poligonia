@@ -83,6 +83,7 @@ class OptionsScene extends Scene
 					{
 						this.barraSound.SetValue(this.barraSound.value - 1);
 						volumen = volumen -1;
+						SetVolumen(volumen);
 					}
 				}
 				
@@ -93,6 +94,7 @@ class OptionsScene extends Scene
 					{
 						this.barraSound.SetValue(this.barraSound.value + 1);
 						volumen = volumen +1;
+						SetVolumen(volumen);
 					}
 				}					
 				break;

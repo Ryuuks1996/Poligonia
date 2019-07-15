@@ -1,0 +1,7 @@
+class LifeCounter
+{
+	constructor(player)
+	{
+	
+	}
+}

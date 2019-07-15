@@ -78,7 +78,7 @@ class GameScene extends Scene
 		else if(gameObject.tag == "Core")
 		{
 			// saca null no se porque
-			//this.AddMiniMap(gameObject,"Icon_MiniMap_Core",gameObject.size*5);
+			this.AddMiniMap(gameObject,"Icon_MiniMap_Core",40);
 		}
 	}
 
