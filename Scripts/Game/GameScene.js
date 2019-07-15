@@ -17,7 +17,7 @@ class GameScene extends Scene
 		this.camera.position.z = -20;
 		this.light = new THREE.AmbientLight(0xffffff); this.scene.add(this.light);
 
-		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),10,20,1,0.2);
+		this.player = new Player(0, -10, 0, Models[4].clone(), GetMaterial("Material_Ship"),5,15,2,0.2);
 		this.core = new Core(100, Models[5].clone(), undefined);
 		this.AddGameObject(this.player);
 		this.AddGameObject(this.core);
@@ -26,6 +26,7 @@ class GameScene extends Scene
 		this.altimetro = new Altimetro(this.sceneHUD,this.player);
 		this.miniMap = new MiniMap(this.sceneHUD,100);
 		this.AddMiniMap(this.player,"Icon_MiniMap_Player",30);
+		this.AddMiniMap(this.core,"Icon_MiniMap_Core",30);
 		
 		this.waveController = new WaveController(new THREE.Vector3(0,0,0),5,1.1,[0.2,0.6,0.8],500,10);
 		
@@ -78,7 +79,7 @@ class GameScene extends Scene
 		else if(gameObject.tag == "Core")
 		{
 			// saca null no se porque
-			this.AddMiniMap(gameObject,"Icon_MiniMap_Core",40);
+			//this.AddMiniMap(gameObject,"Icon_MiniMap_Core",40);
 		}
 	}
 

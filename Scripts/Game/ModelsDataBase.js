@@ -29,15 +29,27 @@ OBJLoader.load('Models3D/BigAsteroid.obj',
 	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
 	function ( error ) {console.log( 'An error happened' );}
 );
-	
-OBJLoader.load('Models3D/laser.obj',
+
+OBJLoader.load('Models3D/Core.obj',
 	function ( object ) {Models[4] = object;},
 	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
 	function ( error ) {console.log( 'An error happened' );}
 );
 
-OBJLoader.load('Models3D/Bomb.obj',
+OBJLoader.load('Models3D/laser.obj',
 	function ( object ) {Models[5] = object;},
+	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
+	function ( error ) {console.log( 'An error happened' );}
+);
+
+OBJLoader.load('Models3D/laser2.obj',
+	function ( object ) {Models[6] = object;},
+	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
+	function ( error ) {console.log( 'An error happened' );}
+);
+
+OBJLoader.load('Models3D/laser3.obj',
+	function ( object ) {Models[7] = object;},
 	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
 	function ( error ) {console.log( 'An error happened' );}
 );
