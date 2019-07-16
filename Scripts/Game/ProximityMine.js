@@ -46,5 +46,6 @@ class ProximityMine extends GameObject
 		var explosion = new Explocion(this.gameObject.mesh.position.x,
 			this.gameObject.mesh.position.y, this.gameObject.mesh.position.z,
 			this.gameObject.mesh, this.gameObject.mesh.material, initialSize, finalSize);
+			Destroy(this);
 	}
 }
