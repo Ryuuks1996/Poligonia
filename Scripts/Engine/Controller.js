@@ -138,6 +138,7 @@ class InputManager
 		this.buttons.push(new Input("Trigger", 32));
 		this.buttons.push(new Input("Fire1", 0));
 		this.buttons.push(new Input("Fire2", 2));
+		this.buttons.push(new Input("Fire2", 81));
 		this.buttons.push(new Input("Enter", 13));
 		this.buttons.push(new Input("Escape", 27));
 	}

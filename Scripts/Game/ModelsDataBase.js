@@ -30,7 +30,7 @@ OBJLoader.load('Models3D/BigAsteroid.obj',
 	function ( error ) {console.log( 'An error happened' );}
 );
 
-OBJLoader.load('Models3D/ciudad.obj',
+OBJLoader.load('Models3D/Core.obj',
 	function ( object ) {Models[4] = object;},
 	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
 	function ( error ) {console.log( 'An error happened' );}
@@ -62,6 +62,18 @@ OBJLoader.load('Models3D/Explocion.obj',
 
 OBJLoader.load('Models3D/Plasma.obj',
 	function ( object ) {Models[9] = object;},
+	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
+	function ( error ) {console.log( 'An error happened' );}
+);
+
+OBJLoader.load('Models3D/Bomb.obj',
+	function ( object ) {Models[10] = object;},
+	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
+	function ( error ) {console.log( 'An error happened' );}
+);
+
+OBJLoader.load('Models3D/Power_Up.obj',
+	function ( object ) {Models[10] = object;},
 	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
 	function ( error ) {console.log( 'An error happened' );}
 );

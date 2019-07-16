@@ -1,9 +1,10 @@
 class Core extends GameObject
 {
-    constructor(life,obj3D,material)
+    constructor(life,obj3D,material,lifeBar)
     {
         super(0,0,0,obj3D,material);
         this.life = life;
+        this.lifeBar = lifeBar;
         this.tag = "Core";
         this.AddBehaviors(new SphereCollider(this,3.5));
     }
@@ -11,6 +12,7 @@ class Core extends GameObject
     Update()
     {
         super.Update();
+        this.lifeBar.SetValue(this.life);
     }
 
     GetDamage(damage)

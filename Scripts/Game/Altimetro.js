@@ -18,14 +18,14 @@ class Altimetro
 		var pos = this.target.mesh.position.clone();
 		if(pos.y <= -this.radius)
 		{
-			this.target.SetPosition(
+			this.icon.SetPosition(
 				this.offsetCenter.x,
 				this.offsetCenter.y + this.radius,
 				0);	
 		}
 		else if(pos.y >= this.radius)
 		{
-			this.target.SetPosition(
+			this.icon.SetPosition(
 				this.offsetCenter.x,
 				this.offsetCenter.y - this.radius,
 				0);	

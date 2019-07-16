@@ -1,16 +1,22 @@
 class Player extends GameObject
 {
-	constructor( x, y, z, obj3D, material,minSpeed,maxSpeed,acceleration,coldDown)
+	constructor( x, y, z, obj3D, material,minSpeed,maxSpeed,acceleration,coldDown, colDown2, nitroBar, lifeBar, powerUps)
 	{
 		super( x, y, z, obj3D, material);
 		this.tag = "player";
 
 		this.lifes = 3;
+		this.lifeBar = lifeBar;
 		this.specialAttack = 3;
+		this.maxSpecial = 6;
 
 		this.shootPowerUp = 0;
 		this.nitro = 100;
-		this.maxNitro = 0;
+		this.nitroBar = nitroBar;
+
+		this.powerUps = powerUps;
+
+		this.maxNitro = 100;
 		this.onNitro = false;
 
 		this.immunity = 0;
@@ -32,19 +38,27 @@ class Player extends GameObject
 		this.velocity = 1;
         this.acceleration = acceleration;
 		this.coldDown = coldDown;
+		this.coldDown2 = coldDown2;
 		this.gunAmount = 1;
 		
 		//this.bulletPrefab = new Bullet();
 		
 		this.direction = this.mesh.getWorldDirection(this.direction);
 		this.time = 0;
+		this.time2 = 0;
 		
 		this.rotation = new THREE.Vector3(0,0,0);
 		this.maxXRotation = Math.PI/3;
+
+		this.AddBehaviors(new SphereCollider(this,3));
 	}
 	
 	Update()
 	{
+		
+		this.lifeBar.SetValue(this.lifes);
+		this.powerUps.SetValue(this.specialAttack);
+
 		//movement 
 		if(Math.abs(this.rotation.x) > this.maxXRotation)
 		{
@@ -105,10 +119,22 @@ class Player extends GameObject
 
 		this.time += time.DeltaTime();
 
+		//special attack
+		if(inputManager.GetInput("Fire2") && this.time2 >= this.coldDown2)
+		{
+			if(this.specialAttack > 0)
+			{
+				this.specialAttack -=1;
+				this.time2 = 0;
+				this.ShootSpecial();
+			}
+		}	
+
+		this.time2 += time.DeltaTime();
+
 		//nitro
 		if(inputManager.GetInput("Trigger"))
 		{
-			console.log("Nitro");
 			if(this.nitro > 0)
 			{
 				if(this.speed < this.maxSpeed + 10)
@@ -124,14 +150,19 @@ class Player extends GameObject
 			this.onNitro = this.speed > this.maxSpeed;
 		}
 
-		if(!this.onNitro){this.nitro += (10*time.DeltaTime())}
+		if(!this.onNitro)
+		{
+			this.nitro += (10*time.DeltaTime());
+			if(this.nitro > this.maxNitro){this.nitro = this.maxNitro }
+		}
+
+		this.nitroBar.SetValue(Math.ceil(this.nitro*0.05));
 
 		//immunity
 		if(this.immunity > 0)
 		{
 			this.immunity -= time.DeltaTime();
-		}
-		
+		}	
 	}
 	
 	Shoot()
@@ -143,16 +174,81 @@ class Player extends GameObject
 						pos.y+this.direction.y,
 						pos.z+this.direction.z,
 						this.projectiles[this.shootPowerUp].clone(),
-						GetMaterial("Material_Laser"),
+						undefined,
 						1,150,4);
-		
 		Instantiate(projectile);
+	}
+
+	ShootSpecial()
+	{
+		Instantiate(new PlasmaBomb(
+			0,0,0,
+			Models[9].clone(),
+			GetMaterial("Plasma"),
+			5,25,3));
 	}
 
 	GetDamage(damage)
 	{
 		if(this.immunity <= 0)
-		{this.lifes -= damage;}
+		{
+			this.lifes -= damage;
+			this.lifeBar.SetValue(this.lifes);
+			this.immunity = 3;
+		}
+	}
+
+	AddLifes(lifes)
+	{
+		this.lifes += lifes;
+		if(this.lifes > 3){this.lifes = 3}
+	}
+
+	AddShootPowerUp(powerUp)
+	{
+		this.shootPowerUp += powerUp;
+		if(this.shootPowerUp > 2){this.shootPowerUp = 2}
+	}
+
+	AddNitro(nitro)
+	{
+		this.nitro += nitro;
+		this.maxNitro += 1;
+		if(this.nitro > this.maxNitro){this.nitro = this.maxNitro }
+	}
+
+	AddSpecialAttack(special)
+	{
+		this.specialAttack += special;
+		if(this.specialAttack > this.maxSpecial){this.specialAttack = this.maxSpecial}
+	}
+
+	OnCollisionEnter(collider)
+	{
+		if(collider.gameObject.tag == "Asteroid")
+		{
+			this.GetDamage(1);
+			Destroy(colldier.gameObject);
+		}
+		else if(collider.gameObject.tag == "PowerUp")
+		{
+			switch(collider.gameObject.value)
+			{
+				case 0:
+					this.AddSpecialAttack(1);
+					break;
+				case 1:
+					this.AddLifes(1);
+					break;
+				case 2:
+					this.AddShootPowerUp(1);
+					break;
+				case 3:
+					this.AddNitro(20);
+					break;
+			}
+			Destroy(collider.gameObject);
+		}
 	}
 }
 
