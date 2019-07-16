@@ -39,5 +39,12 @@ class Scene
 	RemoveGameObject(object)
 	{
 		this.scene.remove(object.mesh);
+		for(var i = 0; i < this.gameObjects.length; i++)
+		{
+			if(object === this.gameObjects[i])
+			{
+				this.gameObjects.splice(i,1);
+			}
+		}
 	}
 }

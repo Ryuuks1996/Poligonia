@@ -33,17 +33,20 @@ CreateMaterial('Assets2D/Hud/Fondo.png',"Background");
 CreateMaterial('Assets2D/Ship.jpg',"Material_Ship");
 CreateMaterial('Assets2D/Textures/laser.jpg',"Material_Laser");
 
+//Ciudadela
+CreateMaterial('Assets2D/Textures/ciudad textures.jpg',"City");
+
 //Asteroids
-CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Small");
-CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Medium");
-CreateMaterial('Assets2D/Ship.jpg',"Material_Asteroid_Large");
+CreateMaterial('Assets2D/Textures/Meteoro grande.jpg',"Material_Asteroid_Small");
+CreateMaterial('Assets2D/Textures/Meteoro mediano textura.jpg',"Material_Asteroid_Medium");
+CreateMaterial('Assets2D/Textures/Meteoro pequeño texrura.jpg',"Material_Asteroid_Large");
 
 //Bomb
 CreateMaterial('Assets2D/Textures/Bomb_Off.jpg',"Material_Bomb_Off");
 CreateMaterial('Assets2D/Textures/Bomb_On.jpg',"Material_Bomb_On");
 
 //explo
-CreateMaterial('Assets2D/Textures/plasma.png',"plasma");
+CreateMaterial('Assets2D/Textures/plasma.png',"Plasma");
 CreateMaterial('Assets2D/Textures/fire.png',"Explocion");
 
 //PowerUp
@@ -62,6 +65,10 @@ CreateMaterial('Assets2D/Hud/Titulo Instrucciones.png',"Instrucciones");
 CreateMaterial('Assets2D/Hud/Titulo Opciones.png',"Opciones");
 CreateMaterial('Assets2D/Hud/Sonido.png',"Sonido");
 CreateMaterial('Assets2D/Hud/Dificultad.png',"Dificultad");
+
+//end
+CreateMaterial('Assets2D/Hud/gameover.png',"Game_Over");
+CreateMaterial('Assets2D/Hud/score.png',"Score");
 
 //Barra sonido
 for(var i = 0; i < 6; i++)

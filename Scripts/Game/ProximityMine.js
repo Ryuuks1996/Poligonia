@@ -9,6 +9,7 @@ class ProximityMine extends GameObject
 		this.materials.push(GetMaterial("Material_Bomb_On"));
 		this.state = 0;
 		this.t = 0;
+		this.tag = "Mine";
 		
 		this.speed = speed;
 		this.radiusFollow = radiusFollow;
@@ -45,7 +46,21 @@ class ProximityMine extends GameObject
 				Explocion();
 			}
 		}
-		
+	}
+
+	OnCollisionEnter(collider)
+	{
+		if(collider.gameObject.tag == "Projectile")
+		{
+			Instantiate(new Explocion(
+				this.mesh.position.x,
+				this.mesh.position.y,
+				this.mesh.position.z,
+				Models[8].clone(),
+				GetMaterial("Explocion"),
+				0,3,1));
+			Destroy(this);
+		}
 	}
 	
 	Animation()
@@ -66,11 +81,15 @@ class ProximityMine extends GameObject
 
 	}
 	
-	Explocion(initialSize, finalSize)
+	Explocion()
 	{
-		var explosion = new Explocion(this.gameObject.mesh.position.x,
-			this.gameObject.mesh.position.y, this.gameObject.mesh.position.z,
-			this.gameObject.mesh, this.gameObject.mesh.material, initialSize, finalSize);
-			Destroy(this);
+		Instantiate(new Explocion(
+			this.mesh.position.x,
+			this.mesh.position.y,
+			this.mesh.position.z,
+			Models[8].clone(),
+			GetMaterial("Explocion"),
+			0,10,1));
+		Destroy(this);
 	}
 }

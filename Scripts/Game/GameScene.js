@@ -21,10 +21,10 @@ class GameScene extends Scene
 		this.lifeCounter = new LifeCounter(this.sceneHUD,GetMaterial("Icon_PlayerLife"),60,-(window.innerWidth/2)+50,-(window.innerHeight/2)+150,80,3);
 		this.especialAttackCounter = new LifeCounter(this.sceneHUD,GetMaterial("Icon_Potenciador"),30,-(window.innerWidth/2)+30,-(window.innerHeight/2)+220,40,6);
 		
-		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),5,15,2,0.5,this.nitro,this.lifeCounter,this.especialAttackCounter);
+		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),5,15,2,0.5,3,this.nitro,this.lifeCounter,this.especialAttackCounter);
 		
 		this.barLife = new BarLife(this.sceneHUD,"Vida_Core_",11,0,(window.innerHeight/2) -80,600,100);
-		this.core = new Core(100, Models[4].clone(), undefined,this.barLife);
+		this.core = new Core(100, Models[4], GetMaterial("City"),this.barLife);
 		this.AddGameObject(this.player);
 		this.AddGameObject(this.core);
 
@@ -34,7 +34,7 @@ class GameScene extends Scene
 		this.AddMiniMap(this.player,"Icon_MiniMap_Player",30);
 		this.AddMiniMap(this.core,"Icon_MiniMap_Core",30);
 		
-		this.waveController = new WaveController(new THREE.Vector3(0,0,0),5,1.1,[0.2,0.6,0.8],500,10);
+		this.waveController = new WaveController(new THREE.Vector3(0,0,0),4,1.1,[0.25,0.6,0.9],500,30);
 		
 	}
 	
