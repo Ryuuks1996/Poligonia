@@ -4,12 +4,17 @@ class ProximityMine extends GameObject
 	{
 		super(x, y, z, obj3D, material);
 		
+		this.materials = [];
+		this.materials.push(GetMaterial("Material_Bomb_Off"));
+		this.materials.push(GetMaterial("Material_Bomb_On"));
+		this.state = 0;
+		this.t = 0;
+		
 		this.speed = speed;
 		this.radiusFollow = radiusFollow;
 		this.radiusIgnite = radiusIgnite;
 		this.radiusExplosion = radiusExplosion;
 		
-		this.center = this.mesh.position;
 		
 		AddBehaviors(new SphereCollider(this, this.radiusFollow));
 	}
@@ -17,6 +22,8 @@ class ProximityMine extends GameObject
 	OnCollisionStay(collider)
 	{
 		super.OnCollisionStay(collider);
+		
+		this.Animation();		
 		
 		if(collider.gameObject.tag == "Player")
 		{
@@ -41,10 +48,29 @@ class ProximityMine extends GameObject
 		
 	}
 	
+	Animation()
+	{
+		this.t += time.DeltaTime();
+		if(this.t >= 0.7)
+		{
+			this.t = 0;
+			if(state == 0)
+			{
+				this.mesh.material.map = this.materials[1].map;
+			}
+			else
+			{
+				this.mesh.material.map = this.materials[0].map;
+			}
+		}
+
+	}
+	
 	Explocion(initialSize, finalSize)
 	{
 		var explosion = new Explocion(this.gameObject.mesh.position.x,
 			this.gameObject.mesh.position.y, this.gameObject.mesh.position.z,
 			this.gameObject.mesh, this.gameObject.mesh.material, initialSize, finalSize);
+			Destroy(this);
 	}
 }

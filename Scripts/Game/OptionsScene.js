@@ -1,6 +1,6 @@
 
 var volumen = 3;
-var dificult = 1;
+var difficulty = 1;
 
 class OptionsScene extends Scene
 {
@@ -30,7 +30,7 @@ class OptionsScene extends Scene
 			listMat.push(GetMaterial("Barra_Dificultad_"+i));
 		}
 		this.barraDif = new Bar(-300,-160,this.sceneHUD,780,100,listMat);
-		this.barraDif.SetValue(dificult);
+		this.barraDif.SetValue(difficulty);
 		
 		this.panelR = new CanvasObject(600,0,this.sceneHUD,GetMaterial("panel_Creditos"),500,700);
 		
@@ -107,7 +107,7 @@ class OptionsScene extends Scene
 					if(val >= 0 && val < this.barraDif.textures.length)
 					{
 						this.barraDif.SetValue(this.barraDif.value - 1);
-						dificult = dificult -1;
+						difficulty = difficulty -1;
 					}			
 				}
 				
@@ -117,7 +117,7 @@ class OptionsScene extends Scene
 					if(val >= 0 && val < this.barraDif.textures.length)
 					{
 						this.barraDif.SetValue(this.barraDif.value + 1);
-						dificult = dificult + 1;
+						difficulty = difficulty + 1;
 					}
 				}					
 				break;
