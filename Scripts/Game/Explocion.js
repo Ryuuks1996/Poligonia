@@ -14,14 +14,16 @@ class Explocion extends GameObject
 	Update()
 	{
 		super.Update();
-		
-		var t = time.ElapsedTime() - this.startTime;		
-		var value = THREE.Math.lerp(this.initialRadius, this.finalRadius, t/this.duration);
-		this.mesh.scale.set(value,value,value);
-
-		if(t >= this.duration)
+		if(!this.destroyed)
 		{
-			Destroy(this);
+			var t = time.ElapsedTime() - this.startTime;		
+			var value = THREE.Math.lerp(this.initialRadius, this.finalRadius, t/this.duration);
+			this.mesh.scale.set(value,value,value);
+
+			if(t >= this.duration)
+			{
+				Destroy(this);
+			}
 		}
 	}
 }

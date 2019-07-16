@@ -9,7 +9,7 @@ class Projectile extends GameObject
 		this.time = 0;
 
 		this.AddBehaviors(new MovementController(this,speed,0,this.speed));
-		this.AddBehaviors(new SphereCollider(this,5));
+		this.AddBehaviors(new SphereCollider(this,2));
 	}
 	
 	Update()
@@ -33,7 +33,7 @@ class Projectile extends GameObject
 				this.mesh.position.z,
 				Models[8].clone(),
 				GetMaterial("Explocion"),
-				0,10,1));
+				0,2,1));
 		}
 		/*if(collider.gameObject.tag != "player"  && (!collider.gameObject.destroyed))
 		{
