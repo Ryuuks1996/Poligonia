@@ -2,14 +2,26 @@ class GameOver extends Scene
 {
 	constructor()
 	{
+		this.scoreTextMesh = this.InitScoreText();
+		this.scoreTextMesh.position.set(0,0,0);
+		this.sceneHUD.add(this.scoreTextMesh);
+	}
 	
+	Update()
+	{
+		super.Update();
+		
+		this.score+=score;
+		this.sceneHUD.remove(this.scoreTextMesh);
+		this.scoreTextMesh = this.InitScoreText();
+		this.scoreTextMesh.position.set(0,0,0);
+		this.sceneHUD.add(this.scoreTextMesh);
 	}
 	
 	InitScoreText()
 	{
 		var canvas1 = document.createElement('canvas');
 		var context1 = canvas1.getContext('2d');
-		context1.font = "30px MinecraftFont";
 		context1.fillStyle = "#000000";
 		context1.fillText('Score: ' + this.score, 50, 50);	
 		var texture1 = new THREE.Texture(canvas1) 

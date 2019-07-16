@@ -2,6 +2,7 @@ class LifeCounter
 {
 	constructor(scene,material,size,x,y,delta,n)
 	{
+		this.max = n;
 		this.Lifes = [];
 		for(var i = 0; i< n; i++)
 		{
@@ -16,7 +17,7 @@ class LifeCounter
 	
 	SetValue(n)
 	{
-		for(var i = 0; i< n; i++)
+		for(var i = 0; i< this.max; i++)
 		{
 			this.Lifes[i].mesh.visible = false;
 		}
