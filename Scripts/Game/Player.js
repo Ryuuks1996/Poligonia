@@ -55,7 +55,19 @@ class Player extends GameObject
 	
 	Update()
 	{
-		
+		super.Update();
+
+		//shooting
+		if(this.time >= this.coldDown && inputManager.GetInput("Fire1"))
+		{
+			this.time = 0;
+			console.log("a");
+			this.Shoot();
+			console.log("b");
+		}
+
+		this.time += time.DeltaTime();
+
 		this.lifeBar.SetValue(this.lifes);
 		this.powerUps.SetValue(this.specialAttack);
 
@@ -92,11 +104,11 @@ class Player extends GameObject
 		//rotation
 		if(inputManager.GetInput("Left"))
 		{
-			this.rotation.x += -0.01;
+			this.rotation.y += -0.01;
 		}
 		else if(inputManager.GetInput("Right"))
 		{
-			this.rotation.x += 0.01;
+			this.rotation.y += 0.01;
 		}
 
 		var y = -((MouseX-(window.innerWidth/2))/(window.innerWidth/2)) * 0.01;
@@ -109,15 +121,6 @@ class Player extends GameObject
 
 		this.mesh.rotation.setFromRotationMatrix(matrix);
 		this.projectiles[0].rotation.setFromRotationMatrix(matrix);
-
-		//shooting
-		if(this.time >= this.coldDown && inputManager.GetInput("Fire1"))
-		{
-			this.time = 0;
-			this.Shoot();
-		}
-
-		this.time += time.DeltaTime();
 
 		//special attack
 		if(inputManager.GetInput("Fire2") && this.time2 >= this.coldDown2)
@@ -194,7 +197,7 @@ class Player extends GameObject
 		{
 			this.lifes -= damage;
 			this.lifeBar.SetValue(this.lifes);
-			this.immunity = 3;
+			this.immunity = 4;
 		}
 	}
 
@@ -227,8 +230,9 @@ class Player extends GameObject
 	{
 		if(collider.gameObject.tag == "Asteroid")
 		{
+			console.log("hola");
 			this.GetDamage(1);
-			Destroy(colldier.gameObject);
+			Destroy(collider.gameObject);
 		}
 		else if(collider.gameObject.tag == "PowerUp")
 		{

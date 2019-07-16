@@ -21,7 +21,7 @@ class GameScene extends Scene
 		this.lifeCounter = new LifeCounter(this.sceneHUD,GetMaterial("Icon_PlayerLife"),60,-(window.innerWidth/2)+50,-(window.innerHeight/2)+150,80,3);
 		this.especialAttackCounter = new LifeCounter(this.sceneHUD,GetMaterial("Icon_Potenciador"),30,-(window.innerWidth/2)+30,-(window.innerHeight/2)+220,40,6);
 		
-		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),5,15,2,0.5,3,this.nitro,this.lifeCounter,this.especialAttackCounter);
+		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),5,15,2,0.2,3,this.nitro,this.lifeCounter,this.especialAttackCounter);
 		
 		this.barLife = new BarLife(this.sceneHUD,"Vida_Core_",11,0,(window.innerHeight/2) -80,600,100);
 		this.core = new Core(100, Models[4], GetMaterial("City"),this.barLife);
@@ -41,6 +41,11 @@ class GameScene extends Scene
 	Update()
 	{
 		super.Update();
+
+		if(this.player.lifes <= 0 || this.core.lifes <= 0)
+		{
+			SetScene(5);
+		}
 		
 		this.miniMap.Update();
 		this.altimetro.Update();

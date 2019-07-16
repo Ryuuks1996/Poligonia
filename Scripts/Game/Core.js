@@ -3,7 +3,8 @@ class Core extends GameObject
     constructor(life,obj3D,material,lifeBar)
     {
         super(0,0,0,obj3D,material);
-        this.life = life;
+        this.lifes = life;
+        this.maxLife = life;
         this.lifeBar = lifeBar;
         this.tag = "Core";
         this.AddBehaviors(new SphereCollider(this,3.5));
@@ -12,13 +13,13 @@ class Core extends GameObject
     Update()
     {
         super.Update();
-        this.lifeBar.SetValue(this.life);
+        this.lifeBar.SetValue(Math.ceil(this.life*10/this.maxLife));
     }
 
     GetDamage(damage)
     {
-        this.life -= damage;
-        if(this.life <= 0)
+        this.lifes -= damage;
+        if(this.lifes <= 0)
         {
             Destroy(this)
         }

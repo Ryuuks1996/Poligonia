@@ -64,6 +64,7 @@ class Asteroid extends GameObject
                     Models[8].clone(),
                     GetMaterial("Explocion"),
                     0,this.size*3,1));
+                
             }
 
             Destroy(this);

@@ -14,7 +14,6 @@ class ProximityMine extends GameObject
 		this.speed = speed;
 		this.radiusFollow = radiusFollow;
 		this.radiusIgnite = radiusIgnite;
-		this.radiusExplosion = radiusExplosion;
 		
 		
 		AddBehaviors(new SphereCollider(this, this.radiusFollow));
@@ -41,7 +40,7 @@ class ProximityMine extends GameObject
 				dirN.z * this.speed * time.DeltaTime()
 				));
 				
-			if(dir.length() < radiusIgnite)
+			if(dir.length() < this.radiusIgnite)
 			{
 				Explocion();
 			}

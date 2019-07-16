@@ -30,7 +30,7 @@ OBJLoader.load('Models3D/BigAsteroid.obj',
 	function ( error ) {console.log( 'An error happened' );}
 );
 
-OBJLoader.load('Models3D/Core.obj',
+OBJLoader.load('Models3D/ciudad.obj',
 	function ( object ) {Models[4] = object;},
 	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
 	function ( error ) {console.log( 'An error happened' );}
@@ -73,7 +73,7 @@ OBJLoader.load('Models3D/Bomb.obj',
 );
 
 OBJLoader.load('Models3D/PowerUp.obj',
-	function ( object ) {Models[10] = object;},
+	function ( object ) {Models[11] = object;},
 	function ( xhr ) {/*console.log( ( xhr.loaded / xhr.total * 100 ) + '% loaded' );*/},
 	function ( error ) {console.log( 'An error happened' );}
 );
