@@ -66,6 +66,10 @@ CreateMaterial('Assets2D/Hud/Titulo Opciones.png',"Opciones");
 CreateMaterial('Assets2D/Hud/Sonido.png',"Sonido");
 CreateMaterial('Assets2D/Hud/Dificultad.png',"Dificultad");
 
+//end
+CreateMaterial('Assets2D/Hud/gameover.png',"Game_Over");
+CreateMaterial('Assets2D/Hud/score.png',"Score");
+
 //Barra sonido
 for(var i = 0; i < 6; i++)
 {
