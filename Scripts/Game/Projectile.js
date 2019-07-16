@@ -32,8 +32,8 @@ class Projectile extends GameObject
 				this.mesh.position.y,
 				this.mesh.position.z,
 				Models[8].clone(),
-				undefined,
-				0,1,0.5));
+				GetMaterial("Explocion"),
+				0,10,1));
 		}
 		/*if(collider.gameObject.tag != "player"  && (!collider.gameObject.destroyed))
 		{

@@ -25,7 +25,7 @@ class Time
         return this.deltaTime/1000;
     }
 
-    ElpasedTime()
+    ElapsedTime()
     {
         return this.elapsedTime/1000;
     }
