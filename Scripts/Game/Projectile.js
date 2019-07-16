@@ -2,14 +2,18 @@ class Projectile extends GameObject
 {
 	constructor(x,y,z,obj3D,material, damage, speed, lifeSpan)
 	{
+		console.log("a");
 		super(x,y,z,obj3D,material);
 		this.tag = "Projectile";
 		this.damage = damage;
 		this.lifeSpan = lifeSpan;
 		this.time = 0;
+		console.log("b");
 
 		this.AddBehaviors(new MovementController(this,speed,0,this.speed));
 		this.AddBehaviors(new SphereCollider(this,2));
+		
+		console.log("c");
 	}
 	
 	Update()
@@ -35,10 +39,10 @@ class Projectile extends GameObject
 				GetMaterial("Explocion"),
 				0,2,1));
 		}
-		/*if(collider.gameObject.tag != "player"  && (!collider.gameObject.destroyed))
+		if(collider.gameObject.tag != "player")
 		{
+			console.log("here");
 			Destroy(this);
-		}*/
-		Destroy(this);
+		}
 	}
 }

@@ -61,9 +61,7 @@ class Player extends GameObject
 		if(this.time >= this.coldDown && inputManager.GetInput("Fire1"))
 		{
 			this.time = 0;
-			console.log("a");
 			this.Shoot();
-			console.log("b");
 		}
 
 		this.time += time.DeltaTime();
