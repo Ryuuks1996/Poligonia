@@ -17,16 +17,18 @@ class GameScene extends Scene
 		this.camera.position.z = -20;
 		this.light = new THREE.AmbientLight(0xffffff); this.scene.add(this.light);
 
-		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),5,15,2,0.5);
-		this.core = new Core(100, Models[4].clone(), undefined);
-		this.AddGameObject(this.player);
-		this.AddGameObject(this.core);
-
+		this.nitro = new BarLife(this.sceneHUD,"Barra_Nitro_",6,-(window.innerWidth/2)+160,-(window.innerHeight/2)+50,300,75);
 		this.lifeCounter = new LifeCounter(this.sceneHUD,GetMaterial("Icon_PlayerLife"),60,-(window.innerWidth/2)+50,-(window.innerHeight/2)+150,80,3);
 		this.especialAttackCounter = new LifeCounter(this.sceneHUD,GetMaterial("Icon_Potenciador"),30,-(window.innerWidth/2)+30,-(window.innerHeight/2)+220,40,6);
 		
-		this.nitro = new BarLife(this.sceneHUD,"Barra_Nitro_",6,-(window.innerWidth/2)+160,-(window.innerHeight/2)+50,300,75);
+		this.player = new Player(0, -10, 0, Models[0].clone(), GetMaterial("Material_Ship"),5,15,2,0.5,this.nitro,this.lifeCounter,this.especialAttackCounter);
+		
 		this.barLife = new BarLife(this.sceneHUD,"Vida_Core_",11,0,(window.innerHeight/2) -80,600,100);
+		this.core = new Core(100, Models[4].clone(), undefined,this.barLife);
+		this.AddGameObject(this.player);
+		this.AddGameObject(this.core);
+
+		
 		this.altimetro = new Altimetro(this.sceneHUD,this.player);
 		this.miniMap = new MiniMap(this.sceneHUD,100);
 		this.AddMiniMap(this.player,"Icon_MiniMap_Player",30);

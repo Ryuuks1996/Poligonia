@@ -16,7 +16,7 @@ class LifeCounter
 	
 	SetValue(n)
 	{
-		for(var i = 0; i< 3; i++)
+		for(var i = 0; i< n; i++)
 		{
 			this.Lifes[i].mesh.visible = false;
 		}
