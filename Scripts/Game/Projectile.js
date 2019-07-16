@@ -27,6 +27,13 @@ class Projectile extends GameObject
 		if(collider.gameObject.tag == "Asteroid"  && (!collider.gameObject.destroyed))
         {
 			collider.gameObject.GetDamage(this.damage);
+			Instantiate(new Explocion(
+				this.mesh.position.x,
+				this.mesh.position.y,
+				this.mesh.position.z,
+				Models[8].clone(),
+				undefined,
+				0,1,0.5));
 		}
 		/*if(collider.gameObject.tag != "player"  && (!collider.gameObject.destroyed))
 		{

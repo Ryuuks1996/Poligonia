@@ -1,6 +1,6 @@
 class Explocion extends GameObject
 {
-	constructor(x, y, z, obj3D, material, initialRadius, finalRadius)
+	constructor(x, y, z, obj3D, material, initialRadius, finalRadius, duration)
 	{
 		super(x, y, z, obj3D, material);
 		
@@ -8,7 +8,7 @@ class Explocion extends GameObject
 		this.finalRadius = finalRadius;
 
 		this.startTime = time.ElapsedTime();
-		this.duration = 1;
+		this.duration = duration;
 	}
 
 	Update()
