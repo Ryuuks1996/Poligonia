@@ -185,7 +185,7 @@ class Player extends GameObject
 			0,0,0,
 			Models[9].clone(),
 			GetMaterial("Plasma"),
-			5,25,3));
+			5,80,3));
 	}
 
 	GetDamage(damage)
