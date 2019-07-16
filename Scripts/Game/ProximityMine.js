@@ -14,9 +14,9 @@ class ProximityMine extends GameObject
 		AddBehaviors(new SphereCollider(this, this.radiusFollow));
 	}
 		
-	OnCollisionEnter(collider)
+	OnCollisionStay(collider)
 	{
-		super.OnCollisionEnter();
+		super.OnCollisionStay(collider);
 		
 		if(collider.gameObject.tag == "Player")
 		{

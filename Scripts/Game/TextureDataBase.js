@@ -47,12 +47,12 @@ CreateMaterial('Assets2D/Textures/plasma.png',"plasma");
 CreateMaterial('Assets2D/Textures/fire.png',"Explocion");
 
 //PowerUp
-CreateMaterial('Assets2D/Textures/PowerUp_Red.jpg',"Material_PowerUp_Red");
-CreateMaterial('Assets2D/Textures/PowerUp_Blue.jpg',"Material_PowerUp_Blue");
-CreateMaterial('Assets2D/Textures/PowerUp_Green.jpg',"Material_PowerUp_Green");
-CreateMaterial('Assets2D/Textures/PowerUp_Yellow.jpg',"Material_PowerUp_Yellow");
-CreateMaterial('Assets2D/Textures/PowerUp_Orange.jpg',"Material_PowerUp_Orange");
-CreateMaterial('Assets2D/Textures/PowerUp_Purple.jpg',"Material_PowerUp_Purple");
+CreateMaterial('Assets2D/Textures/PowerUp_Red.jpg',"Material_PowerUp_0");
+CreateMaterial('Assets2D/Textures/PowerUp_Blue.jpg',"Material_PowerUp_3");
+CreateMaterial('Assets2D/Textures/PowerUp_Green.jpg',"Material_PowerUp_2");
+CreateMaterial('Assets2D/Textures/PowerUp_Yellow.jpg',"Material_PowerUp_1");
+CreateMaterial('Assets2D/Textures/PowerUp_Orange.jpg',"Material_PowerUp_4");
+CreateMaterial('Assets2D/Textures/PowerUp_Purple.jpg',"Material_PowerUp_5");
 
 //////////// HUD ////////////
 
