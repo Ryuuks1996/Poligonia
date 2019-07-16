@@ -52,6 +52,7 @@ class WaveController
 
             if(r > this.thresholds[2])
             {
+                console.log("a");
                 x -= ((Math.random()*0.7)*this.radius);
                 y -= ((Math.random()*0.7)*this.radius);
                 z -= ((Math.random()*0.7)*this.radius);

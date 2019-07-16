@@ -1,6 +1,6 @@
 class Player extends GameObject
 {
-	constructor( x, y, z, obj3D, material,minSpeed,maxSpeed,acceleration,coldDown, colDown2, nitroBar, lifeBar, powerUps)
+	constructor( x, y, z, obj3D, material,minSpeed,maxSpeed,acceleration,coldDown, coldDown2, nitroBar, lifeBar, powerUps)
 	{
 		super( x, y, z, obj3D, material);
 		this.tag = "player";
