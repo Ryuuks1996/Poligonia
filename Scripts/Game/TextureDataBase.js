@@ -69,6 +69,7 @@ CreateMaterial('Assets2D/Hud/Dificultad.png',"Dificultad");
 //end
 CreateMaterial('Assets2D/Hud/gameover.png',"Game_Over");
 CreateMaterial('Assets2D/Hud/score.png',"Score");
+CreateMaterial('Assets2D/Hud/Mensaje2.png',"Press_Back");
 
 //Barra sonido
 for(var i = 0; i < 6; i++)
