@@ -4,7 +4,7 @@ var HEIGHT = window.innerHeight;
 var inputManager = new InputManager();
 var CubeTextureLoader = new THREE.CubeTextureLoader();
 
-
+var score = 0;
 
 
 /*
@@ -35,6 +35,9 @@ function SetScene(id)
 			break;
 		case 4:
 			this.scene = new LoadingScene(3);
+			break;
+		case 5:
+			this.scene = new GameOver();
 			break;
 		default:
 			this.scene = new MainMenu();
